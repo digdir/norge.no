@@ -134,3 +134,18 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+### Windows
+*.lnk
+
+### Linux
+*~
+
+# KDE directory preferences
+.directory
+
+### MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
