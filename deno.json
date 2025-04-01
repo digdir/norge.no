@@ -1,0 +1,27 @@
+{
+  "workspace": ["frontend"],
+  "tasks": {
+    "dev": {
+      "description": "Start the development server",
+      "command": "cd frontend && astro dev"
+    },
+    "build": {
+      "description": "Build the project for production",
+      "command": "astro build"
+    },
+    "preview": {
+      "description": "Preview the production build",
+      "command": "astro preview"
+    }
+  },
+  "imports": {
+    "astro": "npm:astro@5.5.5",
+    "react": "npm:react@19.0.0",
+    "react-dom": "npm:react-dom@19.0.0",
+    "@astrojs/react": "npm:@astrojs/react@4.2.2",
+    "@types/react": "npm:@types/react@19.0.12",
+    "@types/react-dom": "npm:@types/react-dom@19.0.4"
+  },
+  "nodeModulesDir": "auto",
+  "license": "./LICENSE"
+}
