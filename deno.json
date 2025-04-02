@@ -1,17 +1,53 @@
 {
-  "workspace": ["frontend"],
+  "workspace": ["frontend", "cms"],
   "tasks": {
-    "dev": {
-      "description": "Start the development server",
+    "astro:dev": {
+      "description": "Start the development server for the astro project",
       "command": "cd frontend && astro dev"
     },
-    "build": {
-      "description": "Build the project for production",
+    "astro:build": {
+      "description": "Build the project for production for the astro project",
       "command": "astro build"
     },
-    "preview": {
-      "description": "Preview the production build",
+    "astro:preview": {
+      "description": "Preview the production build for the astro project",
       "command": "astro preview"
+    },
+    "strapi": {
+      "description": "Displays a help menu or a list of available commands for Strapi",
+      "command": "cd cms && npm install && sh -c 'npm run strapi'"
+    },
+    "strapi:dev": {
+      "description": "Start the Strapi development server",
+      "command": "cd cms && npm install && sh -c 'npm run develop'"
+    },
+    "strapi:develop": {
+      "description": "Also starts the Strapi development server",
+      "command": "cd cms && npm install && sh -c 'npm run develop'"
+    },
+    "strapi:build": {
+      "description": "Build the strapi project for production",
+      "command": "cd cms && npm install && sh -c 'npm run build'"
+    },
+    "strapi:console": {
+      "description": "Open an interactive console (REPL) for the Strapi application",
+      "command": "cd cms && npm install && sh -c 'npm run console'"
+    },
+    "strapi:deploy": {
+      "description": "Deploy the strapi project",
+      "command": "cd cms && npm install && sh -c 'npm run deploy'"
+    },
+    "strapi:start": {
+      "description": "Starts the Strapi server",
+      "command": "cd cms && npm install && sh -c 'npm run start'"
+    },
+    "strapi:upgrade": {
+      "description": "Upgrade to the latest version of Strapi",
+      "command": "cd cms && npm install && sh -c 'npx @strapi/upgrade latest'"
+    },
+    "strapi:upgrade:dry": {
+      "description": "Simulate an upgrade to the latest version of Strapi",
+      "command": "cd cms && npm install && sh -c 'npx @strapi/upgrade latest --dry'"
     }
   },
   "imports": {
