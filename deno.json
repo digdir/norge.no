@@ -1,65 +1,28 @@
 {
-  "workspace": ["frontend", "cms"],
+  "workspace": ["packages/*", "apps/frontend"],
   "tasks": {
-    "astro:dev": {
-      "description": "Start the development server for the astro project",
-      "command": "cd frontend && astro dev"
-    },
-    "astro:build": {
-      "description": "Build the project for production for the astro project",
-      "command": "astro build"
-    },
-    "astro:preview": {
-      "description": "Preview the production build for the astro project",
-      "command": "astro preview"
-    },
-    "strapi": {
-      "description": "Displays a help menu or a list of available commands for Strapi",
-      "command": "cd cms && npm install && sh -c 'npm run strapi'"
-    },
-    "strapi:dev": {
-      "description": "Start the Strapi development server",
-      "command": "cd cms && npm install && sh -c 'npm run develop'"
-    },
-    "strapi:develop": {
-      "description": "Also starts the Strapi development server",
-      "command": "cd cms && npm install && sh -c 'npm run develop'"
-    },
-    "strapi:build": {
-      "description": "Build the strapi project for production",
-      "command": "cd cms && npm install && sh -c 'npm run build'"
-    },
-    "strapi:console": {
-      "description": "Open an interactive console (REPL) for the Strapi application",
-      "command": "cd cms && npm install && sh -c 'npm run console'"
-    },
-    "strapi:deploy": {
-      "description": "Deploy the strapi project",
-      "command": "cd cms && npm install && sh -c 'npm run deploy'"
-    },
-    "strapi:start": {
-      "description": "Starts the Strapi server",
-      "command": "cd cms && npm install && sh -c 'npm run start'"
-    },
-    "strapi:upgrade": {
-      "description": "Upgrade to the latest version of Strapi",
-      "command": "cd cms && npm install && sh -c 'npx @strapi/upgrade latest'"
-    },
-    "strapi:upgrade:dry": {
-      "description": "Simulate an upgrade to the latest version of Strapi",
-      "command": "cd cms && npm install && sh -c 'npx @strapi/upgrade latest --dry'"
-    }
+    "frontend:dev": "cd apps/frontend && deno run dev",
+    "frontend:build": "cd apps/frontend && astro build",
+    "frontend:preview": "cd apps/frontend && astro preview",
+    "cms:install": "cd apps/cms && pnpm approve-builds && pnpm install",
+    "cms:dev": "cd apps/cms && sh -c 'pnpm run develop'",
+    "cms:build": "cd apps/cms && sh -c 'pnpm run build'",
+    "cms:console": "cd apps/cms && sh -c 'pnpm run console'",
+    "cms:deploy": "cd apps/cms && sh -c 'pnpm run deploy'",
+    "cms:start": "cd apps/cms && sh -c 'pnpm run start'",
+    "cms:upgrade": "cd apps/cms && sh -c 'npx @strapi/upgrade latest'",
+    "cms:upgrade:dry": "cd apps/cms && sh -c 'npx @strapi/upgrade latest --dry'"
   },
   "imports": {
+    "@astrojs/react": "npm:@astrojs/react@^4.2.4",
     "@digdir/designsystemet-css": "npm:@digdir/designsystemet-css@^1.0.3",
     "@digdir/designsystemet-react": "npm:@digdir/designsystemet-react@^1.0.3",
     "@digdir/designsystemet-theme": "npm:@digdir/designsystemet-theme@^1.0.3",
-    "astro": "npm:astro@5.5.5",
-    "react": "npm:react@19.0.0",
-    "react-dom": "npm:react-dom@19.0.0",
-    "@astrojs/react": "npm:@astrojs/react@4.2.2",
-    "@types/react": "npm:@types/react@19.0.12",
-    "@types/react-dom": "npm:@types/react-dom@19.0.4"
+    "@types/react": "npm:@types/react@^19.1.2",
+    "@types/react-dom": "npm:@types/react-dom@^19.1.2",
+    "astro": "npm:astro@^5.7.0",
+    "react": "npm:react@^19.1.0",
+    "react-dom": "npm:react-dom@^19.1.0"
   },
   "nodeModulesDir": "auto",
   "license": "./LICENSE",
@@ -67,6 +30,6 @@
     "types": [
       "@digdir/designsystemet-theme",
       "@digdir/designsystemet-react/react-types"
-      ]
+    ]
   }
 }

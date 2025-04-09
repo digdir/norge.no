@@ -1,0 +1,6 @@
+{
+  "name": "@packages/ui",
+  "exports": {
+    "./components/*": "./components/*"
+  }
+}

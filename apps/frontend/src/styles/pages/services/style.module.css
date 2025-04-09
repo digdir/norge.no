@@ -1,0 +1,63 @@
+.pageContainer {
+  display: flex;
+  height: 70vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.serviceContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to right, #d7f7f7, #fffda1);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.serviceHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.serviceIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  object-fit: contain;
+  padding: 8px;
+}
+
+.serviceContent {
+  margin-bottom: 24px;
+}
+
+.serviceDescription {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #4b5563;
+  margin-bottom: 16px;
+}
+
+.serviceProvider {
+  margin-top: 16px;
+}
+
+.providerLink {
+  font-size: 16px;
+  color: #007aff;
+  text-decoration: none;
+}
+
+.providerLink:hover {
+  text-decoration: underline;
+}
+
+.serviceActions {
+  display: flex;
+  justify-content: flex-start;
+}
