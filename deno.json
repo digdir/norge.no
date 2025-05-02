@@ -2,11 +2,11 @@
   "workspace": ["packages/*", "apps/frontend"],
   "tasks": {
     "frontend:dev": "cd apps/frontend && deno run dev",
-    "frontend:build": "cd apps/frontend && astro build",
-    "frontend:preview": "cd apps/frontend && astro preview",
+    "frontend:build": "cd apps/frontend && deno run build",
+    "frontend:preview": "cd apps/frontend && deno run preview",
     "cms:install": "cd apps/cms && pnpm approve-builds && pnpm install",
     "cms:dev": "cd apps/cms && sh -c 'pnpm run develop'",
-    "cms:build": "cd apps/cms && sh -c 'pnpm run build'",
+    "cms:build": "cd apps/cms && sh -c 'pnpm approve-builds && pnpm install && pnpm run build'",
     "cms:console": "cd apps/cms && sh -c 'pnpm run console'",
     "cms:deploy": "cd apps/cms && sh -c 'pnpm run deploy'",
     "cms:start": "cd apps/cms && sh -c 'pnpm run start'",
@@ -15,6 +15,7 @@
   },
   "imports": {
     "@astrojs/react": "npm:@astrojs/react@^4.2.4",
+    "@deno/astro-adapter": "npm:@deno/astro-adapter@^0.3.0",
     "@digdir/designsystemet-css": "npm:@digdir/designsystemet-css@^1.0.3",
     "@digdir/designsystemet-react": "npm:@digdir/designsystemet-react@^1.0.3",
     "@digdir/designsystemet-theme": "npm:@digdir/designsystemet-theme@^1.0.3",

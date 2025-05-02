@@ -3,12 +3,15 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import deno from '@deno/astro-adapter';
 
 // Resolve the current directory of this file
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   integrations: [react()],
+  output: 'server',
+  adapter: deno(),
   vite: {
     resolve: {
       alias: {

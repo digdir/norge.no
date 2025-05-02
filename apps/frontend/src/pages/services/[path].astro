@@ -7,32 +7,36 @@ import styles from '../../styles/pages/services/style.module.css';
 import fetchApi from '../../lib/cms/api';
 import type { CMSService } from '@packages/types';
 
-
+export const prerender = true;
 export async function getStaticPaths() {
-  // Fetch all services from Strapi
-  const services = await fetchApi<CMSService[]>({
-    endpoint: 'services',
-    wrappedByKey: 'data',
-  });
+  try {
+    // Fetch all services from Strapi
+    const services = await fetchApi<CMSService[]>({
+      endpoint: 'services',
+      wrappedByKey: 'data',
+    });
 
-  // Generate paths for each service
-  return services.map((service) => ({
-    params: {
-      path: service.Title.toLowerCase().replace(/\s+/g, '-'),
-     },
-    props: {
-      Title: service.Title,
-      Description: service.Description,
-      Provider: service.Provider,
-      provider_link_address: service.provider_link_address,
-      icon: service.icon.url,
-    },
-  }));
+    // Generate paths for each service
+    return services.map((service) => ({
+      params: {
+        path: service.Title.toLowerCase().replace(/\s+/g, '-'),
+      },
+      props: {
+        Title: service.Title,
+        Description: service.Description,
+        Provider: service.Provider,
+        provider_link_address: service.provider_link_address,
+        icon: service.icon.url,
+      },
+  }))} 
+  catch (error) {
+    return [];
+  }
 }
 
 // Extract service details
 const { Title, Description, Provider, provider_link_address, icon } = Astro.props;
-const iconUrl = `http://127.0.0.1:1337${icon}`;
+const iconUrl = `${icon}`;
 ---
 <Layout>
   <div class={styles.pageContainer}>

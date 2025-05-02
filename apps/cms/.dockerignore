@@ -1,0 +1,6 @@
+.vscode
+README.md
+node_modules/
+.env.example
+.DS_Store
+.git*

@@ -23,6 +23,7 @@ export default async function fetchApi<T>({
     endpoint = endpoint.slice(1);
   }
   const url = new URL(`${import.meta.env.STRAPI_API_URL}/api/${endpoint}?populate=icon`);
+  console.log('url', url);
 
   if (query) {
     Object.entries(query).forEach(([key, value]) => {

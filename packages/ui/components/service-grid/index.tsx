@@ -8,7 +8,7 @@ interface ServiceGridProps {
 }
 
 function ServiceCard({Title, icon}: Partial<CMSService>) {
-  const iconUrl = `http://127.0.0.1:1337${icon}`;
+  const iconUrl = `${import.meta.env.STRAPI_API_URL}${icon}`;
   return (
     <Link
       href={`/services/${Title?.toLowerCase().replace(/\s+/g, '-')}`}
@@ -35,7 +35,7 @@ export function ServiceGrid({services}: ServiceGridProps) {
           <ServiceCard
             key={index}
             Title={service.Title}
-            icon={service.icon.url}
+            icon={{url: ''}}
           />
         ))}
       </div>
