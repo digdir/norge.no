@@ -5,9 +5,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - '1337:1337'
-    env_file:
-      - ./apps/cms/.env
     environment:
+      DATABASE_CLIENT: postgres
       DATABASE_HOST: cms-db
       DATABASE_PORT: 5432
       DATABASE_NAME: cms-db
@@ -32,6 +31,11 @@ services:
       STRAPI_API_URL: http://cms:1337
     depends_on:
       - cms
+    develop:
+      watch:
+        - action: rebuild
+          path: ./apps/frontend/.env
+          target: /app/apps/frontend/.env
 
   cms-db:
     image: postgres
