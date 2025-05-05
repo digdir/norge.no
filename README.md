@@ -6,10 +6,7 @@
     - [Local Development without Docker](#local-development-without-docker)
       - [Running the cms application](#running-the-cms-application)
       - [Running the frontend application](#running-the-frontend-application)
-    - [Local development with Docker](#local-development-with-docker)
-      - [Running the cms application in isolation with Docker](#running-the-cms-application-in-isolation-with-docker)
-      - [Running the frontend application in isolation with Docker](#running-the-frontend-application-in-isolation-with-docker)
-      - [Running the cms and frontend applications together with Docker Compose](#running-the-cms-and-frontend-applications-together-with-docker-compose)
+    - [Local development with Docker Compose](#local-development-with-docker-compose)
   - [🤝 Contributing](#-contributing)
 
 ## Getting Started
@@ -30,20 +27,6 @@ To get started with the project, follow these steps:
    cd norge.no
    ```
 
-### Local Development without Docker
-
-1. Make sure you have the required tools installed.
-
-   - [Deno](https://deno.land/) (for workspace and Astro)
-   - [Node.js](https://nodejs.org/) (for Strapi)
-   - [pnpm](https://pnpm.io/) (for Strapi)
-
-2. Install the workspace dependencies:
-
-   ```bash
-   deno install --allow-scripts=npm:sharp@0.33.5
-   ```
-
 3. Set correct environment variables in the cms directory:
 
    ```bash
@@ -57,22 +40,29 @@ To get started with the project, follow these steps:
    cp ./apps/frontend/.env.example ./apps/frontend/.env
    ```
 
-   Update the `.env` file with your desired configuration. You can find the Strapi `STRAPI_API_KEY` in the Strapi admin panel under Settings > API Tokens when running the cms application.
+5. Update the `.env` file with your desired configuration. You can find the Strapi `STRAPI_API_KEY` in the Strapi admin panel under Settings > API Tokens when running the cms application.
 
+### Local Development without Docker
+
+1. Make sure you have the required tools installed.
+
+   - [Deno](https://deno.land/) (for workspace and Astro)
+   - [Node.js](https://nodejs.org/) (for Strapi)
+   - [pnpm](https://pnpm.io/) (for Strapi)
+   - [Docker](https://www.docker.com/) (for running the database)
+   - [Docker Compose](https://docs.docker.com/compose/)
+
+2. Install the workspace dependencies:
+
+   ```bash
+   deno install --allow-scripts=npm:sharp@0.33.5
+   ```
 
 #### Running the cms application
 
-1. Fire up a postgres database:
-
-   ```bash
-   docker run \
-      -p 5432:5432 \
-      --name cms-db \
-      -e POSTGRES_USER=cms-user \
-      -e POSTGRES_PASSWORD=cms-password \
-      -e POSTGRES_DB=cms-db \
-      -d postgres
-   ```
+1. For simplicity use sqlite for development without containers. To do this:  
+   a. Uncomment the variables under `Databse configuration for SQLite` in the `apps/cms/.env` file  
+   b. Commnet out the variables under `Database configuration for Postgres`.
 
 2. Install the cms dependencies:
 
@@ -99,92 +89,37 @@ To get started with the project, follow these steps:
 
 3. Open your browser and go to `http://localhost:4321` to see the application running.
 
-### Local development with Docker
+### Local development with Docker Compose
 
-1. Make sure you have Docker installed by running the following command:
-
-   ```bash
-   docker --version
-   ```
-
-2. Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed by running the following command:
-
-```bash
-docker-compose --version
-```
-
-3. You might be asked to log in to Docker Hub from terminal. You can do this by running the following command:
+1. Build the cms app locally due to some compatibility issues with the latest version of Strapi and the Docker image:
 
    ```bash
-   docker login \
-      -u <your-username> \
-      -p <access token or password>
-   ```
-
-#### Running the cms application in isolation with Docker
-
-1. Produce the `dist` and `.strapi` folder on your local machine by running the following command:
-
-   ```bash
-   deno task cms:install
    deno task cms:build
    ```
 
-2. Build the Docker image:
+1. Start the `cms` and `cms-db` services first to create and store an api key in the database which will be used later by the frontend application:
 
    ```bash
-   docker build \
-      -t norgeno-cms-image \
-      -f ./apps/cms/Dockerfile \
-      ./apps/cms/
+   docker-compose up --build cms cms-db
    ```
 
-3. Start the Docker container:
+2. Go to the Strapi admin panel at `http://localhost:1337/admin` and create an API key under Settings > API Tokens. Copy the API key. and paste it in the `.env` file of the frontend application in the `STRAPI_API_KEY` variable.
+
+3. Start the frontend service in a new terminal:
 
    ```bash
-   docker run \
-      -p 1337:1337 \
-      --name norgeno-cms-container \
-      --env-file ./apps/cms/.env \
-      norgeno-cms-image
+   docker-compose up --build frontend
    ```
 
-4. Open your browser and go to `http://localhost:1337` to see the application running.
-
-#### Running the frontend application in isolation with Docker
-
-
-1. Build the Docker image:
+   (Optional) Alternatively, you can run all three services together by running the following command in a new terminal:
 
    ```bash
-      docker build \
-      -t norgeno-frontend-image \
-      -f ./apps/frontend/Dockerfile \
-      .
+   docker-compose up --watch --build
    ```
 
-2. Start the Docker container:
+   This will start all three services, but rebuild the frontend service automatically when the `./apps/frontend/.env` file changes after you add the `STRAPI_API_KEY` variable (step 2).
 
-   ```bash
-   docker run \
-      -p 4321:4321 \
-      --name norgeno-frontend-container \
-      --env-file ./apps/frontend/.env \
-      norgeno-frontend-image
-   ```
-
-3. Open your browser and go to `http://localhost:4321` to see the application running.
-
-#### Running the cms and frontend applications together with Docker Compose
-
-1. Start the Docker containers:
-
-   ```bash
-   docker-compose up --build
-   ```
-
-2. Open your browser and go to `http://localhost:1337` for the cms and `http://localhost:4321` for the frontend to see the applications running.
-
+4. Open your browser and go to `http://localhost:1337` for the cms and `http://0.0.0.0:8085` for the frontend to see the applications running.
 
 ## 🤝 Contributing
 
