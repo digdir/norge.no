@@ -1,7 +1,7 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import {defineConfig} from 'astro/config';
 import react from '@astrojs/react';
-import { fileURLToPath } from 'url';
+import {fileURLToPath} from 'url';
 import path from 'path';
 import cloudflare from '@astrojs/cloudflare';
 
@@ -14,9 +14,11 @@ export default defineConfig({
   adapter: cloudflare(),
   vite: {
     resolve: {
-      alias: import.meta.env.PROD && {
+      alias: {
         '@packages': path.resolve(__dirname, '../../packages'),
-        "react-dom/server": "react-dom/server.edge",
+        ...(import.meta.env.PROD
+          ? {'react-dom/server': 'react-dom/server.edge'}
+          : {}),
       },
     },
     server: {
@@ -26,6 +28,9 @@ export default defineConfig({
           path.resolve(__dirname, '../../'), // Allow the project root
         ],
       },
-    }
+    },
+    ssr: {
+      external: ['node:buffer'],
+    },
   },
 });
