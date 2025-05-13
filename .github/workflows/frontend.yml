@@ -14,40 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-  #     - name: Set up Deno
-  #       uses: denoland/setup-deno@v2
-  #       with:
-  #         deno-version: v2.x
-
-  #     - name: Install dependencies
-  #       run: deno install --allow-scripts=npm:sharp@0.33.5,npm:workerd@1.20250507.0
-
-  #     - name: Run build
-  #       run: deno task frontend:build
-  #       env:
-  #         STRAPI_API_URL: ${{ secrets.STRAPI_API_URL }}
-  #         STRAPI_API_TOKEN: ${{ secrets.STRAPI_API_TOKEN }}
-
-      # - name: Upload build artifacts
-      #   if: github.event_name == 'push' && github.ref == 'refs/heads/chore/pm/astro' # Only upload on push to main
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: build-output
-      #     path: ./apps/frontend/dist
-
-  deploy:
-    needs: build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/chore/pm/astro' && needs.build.result == 'success'
-    runs-on: ubuntu-latest
-    steps:
-      # - name: Download build artifacts
-      #   uses: actions/download-artifact@v4
-      #   with:
-      #     name: build-output
-      #     path: ./apps/frontend/dist
-      - name: Checkout code
-        uses: actions/checkout@v4
-
       - name: Set up Deno
         uses: denoland/setup-deno@v2
         with:
@@ -61,11 +27,45 @@ jobs:
         env:
           STRAPI_API_URL: ${{ secrets.STRAPI_API_URL }}
           STRAPI_API_TOKEN: ${{ secrets.STRAPI_API_TOKEN }}
+
+      - name: Upload build artifacts
+        if: github.event_name == 'push' && github.ref == 'refs/heads/chore/pm/astro' # Only upload on push to main
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: apps/frontend/dist/
+
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/chore/pm/astro' && needs.build.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: apps/frontend/dist/
+
+      - name: Copy .assetsignore to dist
+        run: |
+          cp apps/frontend/public/.assetsignore apps/frontend/dist/.assetsignore
+
+      - name: Install Wrangler
+        run: |
+          ls -a apps/frontend/dist/
+          npm install -g wrangler@4.15.0
+
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: ./apps/frontend
-          wranglerVersion: '4.14.4'
+          wranglerVersion: '4.15.0'
+          workingDirectory: apps/frontend
           command: deploy

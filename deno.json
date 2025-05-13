@@ -14,18 +14,17 @@
     "cms:upgrade:dry": "cd apps/cms && sh -c 'npx @strapi/upgrade latest --dry'"
   },
   "imports": {
-    "@astrojs/cloudflare": "npm:@astrojs/cloudflare@^12.5.2",
+    "@astrojs/cloudflare": "npm:@astrojs/cloudflare@^12.5.3",
     "@astrojs/react": "npm:@astrojs/react@^4.2.7",
-    "@deno/astro-adapter": "npm:@deno/astro-adapter@^0.3.0",
     "@digdir/designsystemet-css": "npm:@digdir/designsystemet-css@^1.0.5",
     "@digdir/designsystemet-react": "npm:@digdir/designsystemet-react@^1.0.5",
     "@digdir/designsystemet-theme": "npm:@digdir/designsystemet-theme@^1.0.5",
-    "@types/react": "npm:@types/react@^19.1.3",
-    "@types/react-dom": "npm:@types/react-dom@^19.1.4",
-    "astro": "npm:astro@^5.7.12",
+    "@types/react": "npm:@types/react@^19.1.4",
+    "@types/react-dom": "npm:@types/react-dom@^19.1.5",
+    "astro": "npm:astro@^5.7.13",
     "react": "npm:react@^19.1.0",
     "react-dom": "npm:react-dom@^19.1.0",
-    "wrangler": "npm:wrangler@^4.14.4"
+    "wrangler": "npm:wrangler@^4.15.0"
   },
   "nodeModulesDir": "auto",
   "license": "./LICENSE",
