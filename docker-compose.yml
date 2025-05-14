@@ -1,0 +1,53 @@
+services:
+  cms:
+    build:
+      context: ./apps/cms
+      dockerfile: Dockerfile
+    ports:
+      - '1337:1337'
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: cms-db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: cms-db
+      DATABASE_USERNAME: cms-user
+      DATABASE_PASSWORD: cms-password
+    volumes:
+      - cms-data:/var/lib/postgresql/data
+    depends_on:
+      - cms-db
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./apps/frontend/Dockerfile
+      args:
+        STRAPI_API_URL: http://cms:1337
+    ports:
+      - '8085:8085'
+    env_file:
+      - ./apps/frontend/.env
+    environment:
+      STRAPI_API_URL: http://cms:1337
+    depends_on:
+      - cms
+    develop:
+      watch:
+        - action: rebuild
+          path: ./apps/frontend/.env
+          target: /app/apps/frontend/.env
+
+  cms-db:
+    image: postgres
+    environment:
+      POSTGRES_USER: cms-user
+      POSTGRES_PASSWORD: cms-password
+      POSTGRES_DB: cms-db
+    restart: always
+    volumes:
+      - cms-data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+volumes:
+  cms-data:

@@ -1,0 +1,6 @@
+{
+  "name": "@packages/types",
+  "exports": {
+    ".": "./index.ts"
+  }
+}

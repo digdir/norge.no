@@ -1,0 +1,37 @@
+{
+  "workspace": ["packages/*", "apps/frontend"],
+  "tasks": {
+    "frontend:dev": "cd apps/frontend && deno run dev",
+    "frontend:build": "cd apps/frontend && deno run build",
+    "frontend:preview": "cd apps/frontend && deno run preview",
+    "cms:install": "cd apps/cms && pnpm approve-builds && pnpm install",
+    "cms:dev": "cd apps/cms && sh -c 'pnpm run develop'",
+    "cms:build": "cd apps/cms && sh -c 'pnpm approve-builds && pnpm install && pnpm run build'",
+    "cms:console": "cd apps/cms && sh -c 'pnpm run console'",
+    "cms:deploy": "cd apps/cms && sh -c 'pnpm run deploy'",
+    "cms:start": "cd apps/cms && sh -c 'pnpm run start'",
+    "cms:upgrade": "cd apps/cms && sh -c 'npx @strapi/upgrade latest'",
+    "cms:upgrade:dry": "cd apps/cms && sh -c 'npx @strapi/upgrade latest --dry'"
+  },
+  "imports": {
+    "@astrojs/cloudflare": "npm:@astrojs/cloudflare@^12.5.3",
+    "@astrojs/react": "npm:@astrojs/react@^4.2.7",
+    "@digdir/designsystemet-css": "npm:@digdir/designsystemet-css@^1.0.5",
+    "@digdir/designsystemet-react": "npm:@digdir/designsystemet-react@^1.0.5",
+    "@digdir/designsystemet-theme": "npm:@digdir/designsystemet-theme@^1.0.5",
+    "@types/react": "npm:@types/react@^19.1.4",
+    "@types/react-dom": "npm:@types/react-dom@^19.1.5",
+    "astro": "npm:astro@^5.7.13",
+    "react": "npm:react@^19.1.0",
+    "react-dom": "npm:react-dom@^19.1.0",
+    "wrangler": "npm:wrangler@^4.15.0"
+  },
+  "nodeModulesDir": "auto",
+  "license": "./LICENSE",
+  "compilerOptions": {
+    "types": [
+      "@digdir/designsystemet-theme",
+      "@digdir/designsystemet-react/react-types"
+    ]
+  }
+}

@@ -40,6 +40,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+**/node_modules/
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
@@ -78,6 +79,7 @@ web_modules/
 .env.test.local
 .env.production.local
 .env.local
+**/.env
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -90,6 +92,9 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
+
+# Astro build output
+**/.astro/
 
 # Gatsby files
 .cache/
@@ -135,7 +140,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-
 ### Windows
 *.lnk
 
@@ -149,3 +153,129 @@ dist
 .DS_Store
 .AppleDouble
 .LSOverride
+
+############################
+# OS X
+############################
+
+**/.DS_Store
+**/.AppleDouble
+**/.LSOverride
+**/Icon
+**/.Spotlight-V100
+**/.Trashes
+**/._*
+
+
+
+############################
+# Windows
+############################
+
+**/Thumbs.db
+**/ehthumbs.db
+**/Desktop.ini
+**/$RECYCLE.BIN/
+**/*.cab
+**/*.msi
+**/*.msm
+**/*.msp
+
+
+############################
+# Packages
+############################
+
+**/*.7z
+**/*.csv
+**/*.dat
+**/*.dmg
+**/*.gz
+**/*.iso
+**/*.jar
+**/*.rar
+**/*.tar
+**/*.zip
+**/*.com
+**/*.class
+**/*.dll
+**/*.exe
+**/*.o
+**/*.seed
+**/*.so
+**/*.swo
+**/*.swp
+**/*.swn
+**/*.swm
+**/*.out
+**/*.pid
+
+
+############################
+# Logs and databases
+############################
+
+**/.tmp
+**/*.log
+**/*.sql
+**/*.sqlite
+**/*.sqlite3
+
+
+############################
+# Misc.
+############################
+
+**/*#
+**/ssl
+**/.idea
+**/nbproject
+**/public/uploads/*
+**/!public/uploads/.gitkeep
+**/.tsbuildinfo
+**/.eslintcache
+
+############################
+# Node.js
+############################
+
+**/lib-cov
+**/lcov.info
+**/pids
+**/logs
+**/results
+**/node_modules
+**/.node_history
+
+############################
+# Package managers
+############################
+
+**/.yarn/*
+**/!.yarn/cache
+**/!.yarn/unplugged
+**/!.yarn/patches
+**/!.yarn/releases
+**/!.yarn/sdks
+**/!.yarn/versions
+**/.pnp.*
+**/yarn-error.log
+
+############################
+# Tests
+############################
+
+**/coverage
+
+############################
+# Strapi
+############################
+
+**/.env
+**/license.txt
+**/exports
+**/.strapi
+**/dist
+**/build
+**/.strapi-updater.json
+**/.strapi-cloud.json

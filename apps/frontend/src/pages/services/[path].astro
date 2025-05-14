@@ -1,0 +1,59 @@
+---
+// filepath: /Users/pooriamehregan/Desktop/norge.no/frontend/src/pages/services/[service].astro
+
+import { Heading, Link } from '@digdir/designsystemet-react';
+import Layout from '../../layouts/Layout.astro';
+import styles from '../../styles/pages/services/style.module.css';
+import fetchApi from '../../lib/cms/api';
+import type { CMSService } from '@packages/types';
+
+export const prerender = true;
+export async function getStaticPaths() {
+  try {
+    // Fetch all services from Strapi
+    const services = await fetchApi<CMSService[]>({
+      endpoint: 'services',
+      wrappedByKey: 'data',
+    });
+
+    // Generate paths for each service
+    return services.map((service) => ({
+      params: {
+        path: service.Title.toLowerCase().replace(/\s+/g, '-'),
+      },
+      props: {
+        Title: service.Title,
+        Description: service.Description,
+        Provider: service.Provider,
+        provider_link_address: service.provider_link_address,
+        icon: service.icon.url,
+      },
+  }))} 
+  catch (error) {
+    return [];
+  }
+}
+
+// Extract service details
+const { Title, Description, Provider, provider_link_address, icon } = Astro.props;
+const iconUrl = `${icon}`;
+---
+<Layout>
+  <div class={styles.pageContainer}>
+<div class={styles.serviceContainer}>
+  <div class={styles.serviceHeader}>
+    <img src={iconUrl} alt={`${Title} icon`} class={styles.serviceIcon} />
+    <Heading level={1}>{Title}</Heading>
+  </div>
+
+  <div class={styles.serviceContent}>
+    <p class={styles.serviceDescription}>{Description}</p>
+    <div class={styles.serviceProvider}>
+      <Link href={provider_link_address} target="_blank">
+        {Provider}
+      </Link>
+    </div>
+  </div>
+</div>
+  </div>
+</Layout>

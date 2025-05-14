@@ -1,0 +1,16 @@
+.searchContainer {
+  margin-bottom: 1.5rem;
+}
+
+.searchWrapper {
+  display: flex;
+  border: 3px solid;
+  border-image: linear-gradient(to right, #f6c8d1,#f50505, #0525f5, #d7f7f7, #6854cb ) 1;
+  border-radius: 4px;
+  background-image: linear-gradient(to right, rgba(255, 200, 200, 0.2), rgba(200, 200, 255, 0.2));
+  overflow: hidden;
+}
+
+.searchWrapper > div {
+  flex: 1;
+}

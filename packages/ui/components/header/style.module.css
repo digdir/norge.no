@@ -1,0 +1,15 @@
+.siteHeader {
+  border-bottom: 1px solid var(--color-border-default);
+  padding: 1rem 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerNav {
+  display: flex;
+  gap: 0.5rem;
+}

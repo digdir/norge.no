@@ -1,0 +1,25 @@
+:root {
+  --color-primary: #0b1941;
+  --color-secondary: #f0e6ff;
+  --color-service-bg: #e8f5e9;
+  --color-service-hover: #d7eeda;
+  --color-service-popular: #f6f6f6;
+}
+
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  color: var(--color-text-default);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.searchSection {
+  max-width: 800px;
+  margin: 2rem auto;
+}
