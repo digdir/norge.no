@@ -115,4 +115,4 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: '4.15.0'
           workingDirectory: apps/frontend
-          command: versions deploy
+          command: deploy
