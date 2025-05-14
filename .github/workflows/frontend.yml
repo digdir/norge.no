@@ -1,0 +1,117 @@
+name: Build, Preview and Deploy Frontend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/frontend/**'
+      - '.github/workflows/frontend.yml'
+      - 'packages/**'
+      - 'deno.json'
+
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apps/frontend/**'
+      - 'packages/**'
+      - '.github/workflows/frontend.yml'
+      - 'deno.json'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Install dependencies
+        run: deno install --allow-scripts=npm:sharp@0.33.5,npm:workerd@1.20250507.0
+
+      - name: Run build
+        run: deno task frontend:build
+        env:
+          STRAPI_API_URL: ${{ secrets.STRAPI_API_URL }}
+          STRAPI_API_TOKEN: ${{ secrets.STRAPI_API_TOKEN }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: apps/frontend/dist/
+          retention-days: 1
+          include-hidden-files: true
+
+  preview:
+    name: Preview
+    if: github.event_name == 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: apps/frontend/dist/
+
+      - name: Install Wrangler
+        run: npm install -g wrangler@4.15.0
+
+      - name: Preview deployment
+        id: preview_deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4.15.0'
+          workingDirectory: apps/frontend
+          command: versions upload
+        env:
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add/Update PR Comment with Preview URL
+        if: success() && steps.preview_deploy.outputs.deployment-url
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: cloudflare-preview-deployment
+          message: |
+            👁️👁️ **Cloudflare Worker Preview Deployment**
+
+            Preview URL: ${{ steps.preview_deploy.outputs.deployment-url }}
+
+  deploy:
+    name: Deploy
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: apps/frontend/dist/
+
+      - name: Install Wrangler
+        run: npm install -g wrangler@4.15.0
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4.15.0'
+          workingDirectory: apps/frontend
+          command: versions deploy
