@@ -4,3 +4,4 @@ onlyBuiltDependencies:
   - core-js-pure
   - esbuild
   - sharp
+  - workerd

@@ -1,0 +1,137 @@
+name: Build and Deploy CMS
+
+defaults:
+  run:
+    working-directory: apps/cms
+
+on:
+  push:
+    branches: [chore/pm/cms-ci]
+    paths:
+      - 'apps/cms/**'
+      - '.github/workflows/cms.yml'
+
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apps/cms/**'
+      - '.github/workflows/cms.yml'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version: '22.x'
+
+      - name: Install dependencies
+        run: |
+          corepack enable pnpm
+          pnpm install
+
+      - name: Run build
+        run: pnpm run build
+        env:
+          HOST: ${{ secrets.HOST }}
+          PORT: ${{ secrets.PORT }}
+          APP_KEYS: ${{ secrets.APP_KEYS }}
+          API_TOKEN_SALT: ${{ secrets.API_TOKEN_SALT }}
+          ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET }}
+          TRANSFER_TOKEN_SALT: ${{ secrets.TRANSFER_TOKEN_SALT }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          DATABASE_CLIENT: ${{ secrets.DATABASE_CLIENT }}
+          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+          DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+          DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
+          DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: apps/cms/dist/
+          retention-days: 1
+
+  preview:
+    name: Preview
+    if: github.event_name == 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: |
+            apps/cms/dist/
+            apps/cms/node_modules/
+
+      - name: Preview deployment
+        id: preview_deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4.15.1'
+          workingDirectory: apps/cms
+          preCommands: corepack enable pnpm
+          command: versions upload
+        env:
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add/Update PR Comment with Preview URL
+        if: success() && steps.preview_deploy.outputs.deployment-url
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: cloudflare-preview-deployment
+          append: true
+          message: |
+            👁️👁️ **Cloudflare Worker Preview Deployment**
+
+            Preview URL: ${{ steps.preview_deploy.outputs.deployment-url }}
+
+  deploy:
+    name: Deploy
+    if: github.event_name == 'push' && github.ref == 'refs/heads/chore/pm/cms-ci'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: apps/cms/dist/
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version: '22.x'
+
+      - name: Install dependencies
+        run: |
+          corepack enable pnpm
+          pnpm install wrangler@4.15.1
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4.15.1'
+          workingDirectory: apps/cms
+          command: deploy
