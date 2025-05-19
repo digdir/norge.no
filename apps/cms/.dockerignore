@@ -1,6 +1,9 @@
 .vscode
 README.md
 node_modules/
+dist/
+.strapi
+.strapi-updater.json
 .env.example
 .DS_Store
 .git*
