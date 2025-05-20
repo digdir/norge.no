@@ -2,19 +2,16 @@
 // filepath: /Users/pooriamehregan/Desktop/norge.no/frontend/src/pages/services/[service].astro
 
 import { Heading, Link } from '@digdir/designsystemet-react';
-import Layout from '../../layouts/Layout.astro';
-import styles from '../../styles/pages/services/style.module.css';
-import fetchApi from '../../lib/cms/api';
+import Layout from '@layouts/Layout.astro';
+import styles from '@styles/pages/services/style.module.css';
 import type { CMSService } from '@packages/types';
+import { useServices } from '@hooks/services';
 
 export const prerender = true;
 export async function getStaticPaths() {
   try {
     // Fetch all services from Strapi
-    const services = await fetchApi<CMSService[]>({
-      endpoint: 'services',
-      wrappedByKey: 'data',
-    });
+    const services: CMSService[] = useServices();
 
     // Generate paths for each service
     return services.map((service) => ({
