@@ -23,6 +23,13 @@ export default defineConfig({
         ...(import.meta.env.PROD
           ? {'react-dom/server': 'react-dom/server.edge'}
           : {}),
+        '@hooks': path.resolve(__dirname, './src/hooks'),
+        '@components': path.resolve(__dirname, './src/components'),
+        '@layouts': path.resolve(__dirname, './src/layouts'),
+        '@api': path.resolve(__dirname, './src/pages/api'),
+        '@styles': path.resolve(__dirname, './src/styles'),
+        '@assets': path.resolve(__dirname, './src/assets'),
+        '@stores': path.resolve(__dirname, './src/stores'),
       },
     },
     server: {

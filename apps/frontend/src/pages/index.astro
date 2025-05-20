@@ -1,33 +1,19 @@
 ---
-import Layout from '../layouts/Layout.astro';
+
+import Layout from '@layouts/Layout.astro';
 import {Header, SearchBar, QuickLinks, ServiceGrid, PopularServices} from '@packages/ui/components';
-import fetchApi from '../lib/cms/api';
-import styles from '../styles/pages/style.module.css';
-
-import type {CMSService} from '@packages/types';
-
-// Fetch articles from Strapi
-let services: CMSService[] = [];
-
-try {
-  services = await fetchApi<CMSService[]>({
-    endpoint: 'services',
-    wrappedByKey: 'data',
-  });
-} catch (error) {
-  console.error('Error fetching services:', error);
-}
+import styles from '@styles/pages/style.module.css';
 ---
 
 <Layout title="Norge.no - Offentlige tjenester">
   <main>
     <div class={styles.container}>
-    <Header client:load />
-    <div class={styles.searchSection}>
-        <SearchBar client:load />
-        <QuickLinks client:load />
+      <Header client:load />
+      <div class={styles.searchSection}>
+          <SearchBar client:load />
+          <QuickLinks client:load />
       </div>
-      <ServiceGrid client:visible services={services} />
+      <ServiceGrid client:visible />
       <PopularServices client:visible />
     </div>
   </main>

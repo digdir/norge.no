@@ -1,9 +1,9 @@
 {
   "workspace": ["packages/*", "apps/frontend"],
   "tasks": {
-    "frontend:dev": "cd apps/frontend && deno run dev",
-    "frontend:build": "cd apps/frontend && deno run build",
-    "frontend:preview": "cd apps/frontend && deno run preview",
+    "frontend:dev": "cd apps/frontend && sh -c 'wrangler types && astro dev'",
+    "frontend:build": "cd apps/frontend && sh -c 'wrangler types && astro build'",
+    "frontend:preview": "cd apps/frontend && sh -c 'wrangler types && wrangler dev'",
     "cms:install": "cd apps/cms && pnpm approve-builds && pnpm install",
     "cms:dev": "cd apps/cms && sh -c 'pnpm run develop'",
     "cms:build": "cd apps/cms && sh -c 'pnpm approve-builds && pnpm install && pnpm run build'",
@@ -16,15 +16,19 @@
   "imports": {
     "@astrojs/cloudflare": "npm:@astrojs/cloudflare@^12.5.3",
     "@astrojs/react": "npm:@astrojs/react@^4.2.7",
+    "@astrojs/ts-plugin": "npm:@astrojs/ts-plugin@^1.10.4",
     "@digdir/designsystemet-css": "npm:@digdir/designsystemet-css@^1.0.5",
     "@digdir/designsystemet-react": "npm:@digdir/designsystemet-react@^1.0.5",
     "@digdir/designsystemet-theme": "npm:@digdir/designsystemet-theme@^1.0.5",
+    "@nanostores/react": "npm:@nanostores/react@^1.0.0",
+    "@tanstack/react-query": "npm:@tanstack/react-query@^5.76.1",
     "@types/react": "npm:@types/react@^19.1.4",
     "@types/react-dom": "npm:@types/react-dom@^19.1.5",
-    "astro": "npm:astro@^5.7.13",
+    "nanostores": "npm:nanostores@^1.0.1",
     "react": "npm:react@^19.1.0",
     "react-dom": "npm:react-dom@^19.1.0",
-    "wrangler": "npm:wrangler@^4.15.0"
+    "wrangler": "npm:wrangler@^4.16.0",
+    "astro": "npm:astro@^5.7.13"
   },
   "nodeModulesDir": "auto",
   "license": "./LICENSE",
