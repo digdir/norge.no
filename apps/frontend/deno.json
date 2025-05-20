@@ -1,0 +1,6 @@
+{
+  "name": "@apps/frontend",
+  "type": "module",
+  "version": "0.0.1",
+  "exports": "./src/pages/index.astro"
+}

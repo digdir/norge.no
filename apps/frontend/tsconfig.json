@@ -7,7 +7,20 @@
       "@digdir/designsystemet-react/react-types"
     ],
     "paths": {
-      "@packages/*": ["../../packages/*"]
-    }
+      "@packages/*": ["../../packages/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@api/*": ["./src/pages/api/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@stores/*": ["./src/stores/*"]
+    },
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      }
+    ],
+    "verbatimModuleSyntax": true,
   }
 }

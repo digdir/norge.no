@@ -35,9 +35,11 @@ jobs:
 
       - name: Run build
         run: deno task frontend:build
+        with:
+
         env:
           STRAPI_API_URL: ${{ secrets.STRAPI_API_URL }}
-          STRAPI_API_TOKEN: ${{ secrets.STRAPI_API_TOKEN }}
+          STRAPI_API_KEY: ${{ secrets.STRAPI_API_KEY }}
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -65,7 +67,7 @@ jobs:
           path: apps/frontend/dist/
 
       - name: Install Wrangler
-        run: npm install -g wrangler@4.15.0
+        run: npm install -g wrangler@4.16.0
 
       - name: Preview deployment
         id: preview_deploy
@@ -73,11 +75,15 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          wranglerVersion: '4.15.0'
+          wranglerVersion: '4.16.0'
           workingDirectory: apps/frontend
+          preCommands: wrangler types
           command: versions upload
+          secrets: STRAPI_API_KEY
         env:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          STRAPI_API_URL: ${{ secrets.STRAPI_API_URL }}
+          STRAPI_API_KEY: ${{ secrets.STRAPI_API_KEY }}
 
       - name: Add/Update PR Comment with Preview URL
         if: success() && steps.preview_deploy.outputs.deployment-url
@@ -106,13 +112,19 @@ jobs:
           path: apps/frontend/dist/
 
       - name: Install Wrangler
-        run: npm install -g wrangler@4.15.0
+        run: npm install -g wrangler@4.16.0
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          wranglerVersion: '4.15.0'
+          wranglerVersion: '4.16.0'
           workingDirectory: apps/frontend
+          preCommands: wrangler types
           command: deploy
+          secrets: STRAPI_API_KEY
+        env:
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          STRAPI_API_URL: ${{ secrets.STRAPI_API_URL }}
+          STRAPI_API_KEY: ${{ secrets.STRAPI_API_KEY }}
