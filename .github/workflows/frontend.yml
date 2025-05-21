@@ -78,11 +78,8 @@ jobs:
           workingDirectory: apps/frontend
           preCommands: wrangler types
           command: versions upload
-          secrets: STRAPI_API_KEY
         env:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          STRAPI_API_URL: ${{ secrets.STRAPI_API_URL }}
-          STRAPI_API_KEY: ${{ secrets.STRAPI_API_KEY }}
 
       - name: Add/Update PR Comment with Preview URL
         if: success() && steps.preview_deploy.outputs.deployment-url
@@ -122,8 +119,5 @@ jobs:
           workingDirectory: apps/frontend
           preCommands: wrangler types
           command: deploy
-          secrets: STRAPI_API_KEY
         env:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          STRAPI_API_URL: ${{ secrets.STRAPI_API_URL }}
-          STRAPI_API_KEY: ${{ secrets.STRAPI_API_KEY }}
