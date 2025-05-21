@@ -1,5 +1,5 @@
 {
-  "name": "norge-no",
+  "name": "frontend-worker",
   "main": "./dist/_worker.js",
   "compatibility_date": "2025-05-13",
   "compatibility_flags": ["nodejs_compat"],
