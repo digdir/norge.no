@@ -21,6 +21,7 @@
     "@digdir/designsystemet-react": "npm:@digdir/designsystemet-react@^1.0.5",
     "@digdir/designsystemet-theme": "npm:@digdir/designsystemet-theme@^1.0.5",
     "@nanostores/react": "npm:@nanostores/react@^1.0.0",
+    "@navikt/aksel-icons": "npm:@navikt/aksel-icons@^7.25.1",
     "@tanstack/react-query": "npm:@tanstack/react-query@^5.76.1",
     "@types/react": "npm:@types/react@^19.1.4",
     "@types/react-dom": "npm:@types/react-dom@^19.1.5",
@@ -35,7 +36,8 @@
   "compilerOptions": {
     "types": [
       "@digdir/designsystemet-theme",
-      "@digdir/designsystemet-react/react-types"
+      "@digdir/designsystemet-react/react-types",
+      "./packages/ui/types/css.d.ts"
     ]
   }
 }
