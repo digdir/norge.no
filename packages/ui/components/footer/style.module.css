@@ -1,0 +1,25 @@
+.footer {
+  color: var(--ds-color-neutral-base-contrast-default);
+  background-color: var(--ds-color-neutral-base-default);
+}
+
+.footerItemContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  padding: 2rem 2rem 4rem 2rem;
+  gap: 2rem;
+  width: 100%; /* Full width of the header */
+  max-width: 1200px; /* Your chosen maximum width */
+  margin: 0 auto;
+}
+
+.footerItem {
+  color: var(--ds-color-neutral-base-contrast-subtle);
+  margin-top: 1rem;
+  display: block;
+}
+
+.footerItem a {
+  color: var(--ds-color-neutral-base-contrast-subtle);
+}

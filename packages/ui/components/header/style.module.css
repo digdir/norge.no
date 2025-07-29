@@ -1,15 +1,16 @@
-.siteHeader {
-  border-bottom: 1px solid var(--color-border-default);
-  padding: 1rem 0;
+.header {
+  padding: 1rem 2rem 0.5rem 2rem; /* Top padding for spacing */
+  display: flex; /* Make the header a flex container */
+  justify-content: space-between; /* Pushes logo to left, second column to right */
+  align-items: center; /* Vertically center items */
+  gap: 1rem; /* Space between logo and secondary nav, if content grows */
+  width: 100%; /* Full width of the header */
+  max-width: 1200px; /* Your chosen maximum width */
+  margin: 0 auto;
 }
 
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.headerNav {
-  display: flex;
-  gap: 0.5rem;
+.controls {
+  display: flex; /* Make the controls a flex container */
+  align-items: center; /* Vertically center items */
+  gap: 0.5rem; /* Space between controls */
 }
