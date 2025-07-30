@@ -11,7 +11,7 @@ export function Header() {
       <div className={styles.controls}>
         <SiteMenu />
         <LanguageSelector />
-        <SignIn />
+        <SignIn dataSize="xs" />
       </div>
     </header>
   );
