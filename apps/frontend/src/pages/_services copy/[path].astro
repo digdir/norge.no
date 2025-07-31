@@ -37,19 +37,20 @@ const iconUrl = `${icon}`;
 ---
 <Layout>
   <div class={styles.pageContainer}>
-    <div class={styles.serviceContainer}>
-      <div class={styles.serviceHeader}>
-        <img src={iconUrl} alt={`${Title} icon`} class={styles.serviceIcon} />
-        <Heading level={1}>{Title}</Heading>
-      </div>
-      <div class={styles.serviceContent}>
-        <p class={styles.serviceDescription}>{Description}</p>
-        <div class={styles.serviceProvider}>
-          <Link href={provider_link_address} target="_blank">
-            {Provider}
-          </Link>
-        </div>
-      </div>
+<div class={styles.serviceContainer}>
+  <div class={styles.serviceHeader}>
+    <img src={iconUrl} alt={`${Title} icon`} class={styles.serviceIcon} />
+    <Heading level={1}>{Title}</Heading>
+  </div>
+
+  <div class={styles.serviceContent}>
+    <p class={styles.serviceDescription}>{Description}</p>
+    <div class={styles.serviceProvider}>
+      <Link href={provider_link_address} target="_blank">
+        {Provider}
+      </Link>
     </div>
+  </div>
+  </div>
   </div>
 </Layout>

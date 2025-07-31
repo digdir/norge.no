@@ -1,0 +1,32 @@
+.mainHero {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.contentContainer {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 320px;
+  padding: 4rem 2rem 2rem 0;
+}
+
+.contentTitle {
+  margin-bottom: 1rem;
+}
+
+.image {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: auto;
+  border-radius: 8px;
+}

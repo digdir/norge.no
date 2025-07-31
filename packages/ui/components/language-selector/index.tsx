@@ -4,7 +4,10 @@ import {GlobeIcon} from '@navikt/aksel-icons';
 export function LanguageSelector() {
   return (
     <Dropdown.TriggerContext>
-      <Dropdown.Trigger data-size="xs">
+      <Dropdown.Trigger
+        data-size="xs"
+        variant="secondary"
+      >
         <GlobeIcon />
         <Paragraph>Language</Paragraph>
       </Dropdown.Trigger>

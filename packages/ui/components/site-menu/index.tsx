@@ -9,6 +9,7 @@ export function SiteMenu() {
         <Dropdown.Trigger
           data-size="xs"
           className={styles.menu}
+          variant="secondary"
         >
           <MenuHamburgerIcon />
           Meny
