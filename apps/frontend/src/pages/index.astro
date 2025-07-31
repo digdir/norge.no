@@ -1,7 +1,7 @@
 ---
 
 import Layout from '@layouts/Layout.astro';
-import {PageLayout, SearchBar, QuickLinks, ServiceGrid, PopularServices, MainHero} from '@packages/ui/components';
+import {PageLayout, SearchBar, QuickLinks, ServiceCategoryGrid, PopularServices, MainHero} from '@packages/ui/components';
 import styles from '@styles/pages/style.module.css';
 ---
 
@@ -13,7 +13,7 @@ import styles from '@styles/pages/style.module.css';
             <SearchBar client:load />
             <QuickLinks client:load />
         </div>
-        <ServiceGrid client:visible />
+        <ServiceCategoryGrid client:visible />
         <PopularServices client:visible />
     </main>
   </PageLayout>
