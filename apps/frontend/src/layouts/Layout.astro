@@ -1,6 +1,7 @@
 ---
 import '@digdir/designsystemet-css/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
+import Posthog from '@components/posthog/posthog.astro';
 ---
 
 <!doctype html>
@@ -10,6 +11,7 @@ import '@digdir/designsystemet-theme/digdir.css';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/logo_light.svg" />
 		<title>Norge</title>
+		<Posthog />
 	</head>
 	<body>
 		<slot />
