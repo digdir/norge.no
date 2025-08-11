@@ -15,6 +15,7 @@
     "npm:@types/react@^19.1.4": "19.1.4",
     "npm:astro@^5.7.13": "5.7.13_@types+node@22.15.20_vite@6.3.5__@types+node@22.15.20__picomatch@4.0.2_zod@3.24.4",
     "npm:nanostores@^1.0.1": "1.0.1",
+    "npm:posthog-js@^1.259.0": "1.259.0",
     "npm:react-dom@^19.1.0": "19.1.0_react@19.1.0",
     "npm:react@^19.1.0": "19.1.0",
     "npm:wrangler@4.16.0": "4.16.0_unenv@2.0.0-rc.17_workerd@1.20250508.0",
@@ -1269,6 +1270,9 @@
     "cookie@1.0.2": {
       "integrity": "sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA=="
     },
+    "core-js@3.45.0": {
+      "integrity": "sha512-c2KZL9lP4DjkN3hk/an4pWn5b5ZefhRJnAc42n6LJ19kSnbeRbdQZE5dSeE2LBol1OwJD3X1BQvFTAsa8ReeDA=="
+    },
     "cross-fetch@3.2.0": {
       "integrity": "sha512-Q+xVJLoGOeIMXZmbUK4HYk+69cQH6LudR0Vu/pRm2YlU/hDV9CiS0gKUMaWY5f2NeUH9C1nV3bsTlCo0FsTV1Q==",
       "dependencies": [
@@ -1428,6 +1432,9 @@
       "dependencies": [
         "picomatch@4.0.2"
       ]
+    },
+    "fflate@0.4.8": {
+      "integrity": "sha512-FJqqoDBR00Mdj9ppamLa/Y7vxm+PRmNWA67N846RvsoYVMKB4q3y/de5PA7gUmRMYK/8CMz2GDZQmCRN1wBcWA=="
     },
     "flattie@1.1.1": {
       "integrity": "sha512-9UbaD6XdAL97+k/n+N7JwX46K/M6Zc6KcFYskrYL8wbBV/Uyk0CTAMY0VT+qiK5PM7AIc9aTWYtq65U7T+aCNQ=="
@@ -2231,6 +2238,18 @@
         "source-map-js"
       ]
     },
+    "posthog-js@1.259.0": {
+      "integrity": "sha512-6usLnJshky8fQ82ask7PIJh4BSFOU0VkRbFg8Zanm/HIlYMG1VOdRWlToA63JXeO7Bzm9TuREq1wFm5U2VEVCg==",
+      "dependencies": [
+        "core-js",
+        "fflate",
+        "preact",
+        "web-vitals"
+      ]
+    },
+    "preact@10.27.0": {
+      "integrity": "sha512-/DTYoB6mwwgPytiqQTh/7SFRL98ZdiD8Sk8zIUVOxtwq4oWcwrcd1uno9fE/zZmUaUrFNYzbH14CPebOz9tZQw=="
+    },
     "printable-characters@1.0.42": {
       "integrity": "sha512-dKp+C4iXWK4vVYZmYSd0KBH5F/h1HoZRsbJ82AVKRO3PEo8L4lBS/vLwhVtpwwuYcoIsVY+1JYKR268yn480uQ=="
     },
@@ -2820,6 +2839,9 @@
     "web-namespaces@2.0.1": {
       "integrity": "sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ=="
     },
+    "web-vitals@4.2.4": {
+      "integrity": "sha512-r4DIlprAGwJ7YM11VZp4R884m0Vmgr6EAKe3P+kO0PPj3Unqyvv59rczf6UiGcb9Z8QxZVcqKNwv/g0WNdWwsw=="
+    },
     "webidl-conversions@3.0.1": {
       "integrity": "sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ=="
     },
@@ -2961,6 +2983,7 @@
       "npm:@types/react@^19.1.4",
       "npm:astro@^5.7.13",
       "npm:nanostores@^1.0.1",
+      "npm:posthog-js@^1.259.0",
       "npm:react-dom@^19.1.0",
       "npm:react@^19.1.0",
       "npm:wrangler@^4.16.0"
