@@ -1,7 +1,6 @@
 ---
-// filepath: /Users/pooriamehregan/Desktop/norge.no/apps/frontend/src/components/posthog/posthog.astro
-// No server-side code that imports PostHog
 const { POSTHOG_API_KEY, POSTHOG_API_HOST, POSTHOG_DEFAULTS }  = Astro.locals.runtime.env || {};
+const posthogConfig = { POSTHOG_API_KEY, POSTHOG_API_HOST, POSTHOG_DEFAULTS };
 ---
 
 <div id="cookie-banner" class="cookie-banner" style="display: none;">
@@ -12,38 +11,11 @@ const { POSTHOG_API_KEY, POSTHOG_API_HOST, POSTHOG_DEFAULTS }  = Astro.locals.ru
   </div>
 </div>
 
-<script type="module" define:vars={{ POSTHOG_API_KEY, POSTHOG_API_HOST, POSTHOG_DEFAULTS }}>
-  // This runs only on the client side
-  const { initPostHog, handleConsent } = await import('/src/components/posthog/setup.ts');
-
-  // Initialize PostHog only on client side
-  if (POSTHOG_API_KEY) {
-    initPostHog({
-      POSTHOG_API_KEY,
-      POSTHOG_API_HOST,
-      POSTHOG_DEFAULTS,
-    });
-  }
-
-  // Show cookie banner if consent not given
-  const existingConsent = localStorage.getItem('cookie_consent');
-  const banner = document.getElementById('cookie-banner');
-  
-  if (!existingConsent && banner) {
-    banner.style.display = 'block';
-  }
-
-  // Handle consent buttons
-  document.getElementById('accept-cookies')?.addEventListener('click', () => {
-    handleConsent({ consent: 'yes' });
-    banner?.remove();
-  });
-
-  document.getElementById('decline-cookies')?.addEventListener('click', () => {
-    handleConsent({ consent: 'no' });
-    banner?.remove();
-  });
+<script define:vars={{ posthogConfig }}>
+  // Pass config to the client-side script via a global variable
+  window.POSTHOG_CONFIG = posthogConfig;
 </script>
+<script src="./setup-script.ts"></script>
 
 <style>
   .cookie-banner {

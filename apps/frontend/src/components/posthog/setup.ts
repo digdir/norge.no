@@ -1,1 +1,0 @@
-export { initPostHog, handleConsent } from '@packages/analytics/posthog';
