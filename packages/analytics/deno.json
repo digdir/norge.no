@@ -1,0 +1,6 @@
+{
+  "name": "@packages/analytics",
+  "exports": {
+    "./posthog": "./posthog/index.ts"
+  }
+}

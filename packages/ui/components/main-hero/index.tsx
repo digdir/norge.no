@@ -1,8 +1,15 @@
 import {Paragraph} from '@digdir/designsystemet-react';
 import {SignIn} from '../sign-in/index.tsx';
 import styles from './style.module.css'; // Assuming you have a CSS file for styles
+import { trackEvent } from "@packages/analytics/posthog";
 
 export function MainHero() {
+  const handleSignInClick = () => {
+    trackEvent('sign_in_button_clicked', {
+      component: 'SignInButton',
+    });
+  };
+
   return (
     <section className={styles.mainHero}>
       <div className={styles.contentContainer}>
@@ -12,7 +19,10 @@ export function MainHero() {
             innstillinger, oversikt over brukere og historikk.
           </Paragraph>
           <span className={styles.buttonContainer}>
-            <SignIn dataSize="lg" />
+            <SignIn
+              dataSize="lg"
+              onClick={handleSignInClick}
+            />
           </span>
         </div>
       </div>
