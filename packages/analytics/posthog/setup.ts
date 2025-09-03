@@ -22,7 +22,7 @@ export const initPostHog = (config: PostHogConfig) => {
   const initialConsent = getCookieConsent();
 
   posthog.init(config.POSTHOG_API_KEY, {
-    debug: true,
+    // debug: true,
     api_host: config.POSTHOG_API_HOST,
     defaults: config.POSTHOG_DEFAULTS,
     autocapture: false,
