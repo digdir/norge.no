@@ -1,4 +1,10 @@
+// deno-lint-ignore-file no-window
 import {posthog} from './setup.ts';
+
+interface EventProps {
+  eventName: string;
+  customProperties?: any;
+}
 
 /**
  * A generic and modular function to track events in PostHog.
@@ -7,7 +13,7 @@ import {posthog} from './setup.ts';
  * @param {string} eventName - The name of the event to track.
  * @param {object} [customProperties={}] - An optional object of custom properties to include with the event.
  */
-export const trackEvent = (eventName, customProperties = {}) => {
+export const trackEvent = ({eventName, customProperties = {}}: EventProps) => {
   // 1. Safety Check: Ensure PostHog is available before trying to use it.
   if (!posthog) {
     console.warn('PostHog not initialized. Event tracking is disabled.');
@@ -30,9 +36,4 @@ export const trackEvent = (eventName, customProperties = {}) => {
 
   // 4. Call PostHog Capture: Send the final, enriched event data.
   posthog.capture(eventName, finalProperties);
-
-  // 5. (Optional) Log to console during development for easy debugging.
-  if (import.meta.env.DEV) {
-    console.log(`🚀 PostHog Event Tracked: ${eventName}`, finalProperties);
-  }
 };
