@@ -1,6 +1,8 @@
+import 'posthog-js/dist/surveys';
 import posthogjs from 'posthog-js/dist/module.no-external';
 import type {PostHog, ConfigDefaults} from 'posthog-js';
 import {getCookieConsent} from './consent.ts';
+import {sanitizeObject} from './sanitization.ts';
 
 interface PostHogConfig {
   POSTHOG_API_KEY: string;
@@ -22,7 +24,7 @@ export const initPostHog = (config: PostHogConfig) => {
   const initialConsent = getCookieConsent();
 
   posthog.init(config.POSTHOG_API_KEY, {
-    // debug: true,
+    debug: false,
     api_host: config.POSTHOG_API_HOST,
     defaults: config.POSTHOG_DEFAULTS,
     autocapture: false,
@@ -40,18 +42,25 @@ export const initPostHog = (config: PostHogConfig) => {
       }
       return '*'.repeat(text.trim().length);
     },
+    before_send: (event) => {
+      if (event.properties) {
+        event.properties = sanitizeObject(event.properties);
+      }
+      return event;
+    },
     // Mask all element attributes and personal data properties by default
     mask_all_element_attributes: true,
     mask_all_text: true,
     mask_personal_data_properties: true,
     cookie_expiration: 30,
     cross_subdomain_cookie: false,
-    disable_compression: true,
+    disable_compression: false,
     disable_external_dependency_loading: true,
     disable_session_recording: true,
     opt_out_persistence_by_default: true,
     respect_dnt: true,
     secure_cookie: true,
+    save_referrer: false,
     save_campaign_params: false,
   });
 
