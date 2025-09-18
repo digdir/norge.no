@@ -1,3 +1,8 @@
+---
+name: '🐞 Bug Report'
+about: Rapporter en feil eller et problem.
+---
+
 ## 🐞 Sammendrag av feilen
 
 Kort beskrivelse av hva som er feil.
