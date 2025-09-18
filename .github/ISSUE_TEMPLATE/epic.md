@@ -1,3 +1,8 @@
+---
+name: '🚀 Epic'
+about: Opprett en epic for å beskrive et større initiativ eller prosjekt.
+---
+
 ## 🎯 Sammendrag / Hypotese
 
 Sammendrag/hypotese for hva som skal løses og hvorfor.

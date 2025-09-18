@@ -1,3 +1,8 @@
+---
+name: '🌟 Feature Request'
+about: Foreslå en ny funksjon eller forbedring.
+---
+
 ## 🤔 Problemstilling / Behov
 
 En beskrivelse av problemstilling eller behov som skal løses.
