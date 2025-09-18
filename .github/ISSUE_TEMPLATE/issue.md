@@ -1,3 +1,8 @@
+---
+name: '📝 Issue'
+about: Opprett en issue for å beskrive en oppgave eller et problem.
+---
+
 ## 📝 Beskrivelse
 
 Kort beskrivelse av hva som skal gjøres.
