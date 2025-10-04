@@ -369,13 +369,12 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiServiceService extends Struct.CollectionTypeSchema {
-  collectionName: 'services';
+export interface ApiArtikkelArtikkel extends Struct.CollectionTypeSchema {
+  collectionName: 'artikler';
   info: {
-    description: '';
-    displayName: 'Service';
-    pluralName: 'services';
-    singularName: 'service';
+    displayName: 'Artikkel';
+    pluralName: 'artikler';
+    singularName: 'artikkel';
   };
   options: {
     draftAndPublish: true;
@@ -386,20 +385,42 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    artikkel: Schema.Attribute.Relation<'manyToOne', 'api::artikkel.artikkel'>;
+    artikler: Schema.Attribute.Relation<'oneToMany', 'api::artikkel.artikkel'>;
+    Brodtekst: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Bunntekst: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.Text;
-    icon: Schema.Attribute.Media<'images' | 'files'>;
+    Ingress: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::service.service'
+      'api::artikkel.artikkel'
     >;
-    Provider: Schema.Attribute.String & Schema.Attribute.Required;
-    provider_link_address: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    Title: Schema.Attribute.String & Schema.Attribute.Required;
+    Tittel: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -915,7 +936,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::service.service': ApiServiceService;
+      'api::artikkel.artikkel': ApiArtikkelArtikkel;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

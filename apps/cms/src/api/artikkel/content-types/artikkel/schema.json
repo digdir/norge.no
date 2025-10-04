@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "artikler",
+  "info": {
+    "singularName": "artikkel",
+    "pluralName": "artikler",
+    "displayName": "Artikkel"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "Tittel": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "Ingress": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Brodtekst": {
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Bunntekst": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "artikkel": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::artikkel.artikkel",
+      "inversedBy": "artikler"
+    },
+    "artikler": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::artikkel.artikkel",
+      "mappedBy": "artikkel"
+    }
+  }
+}
