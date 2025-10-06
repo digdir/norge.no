@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "etater",
+  "info": {
+    "singularName": "etat",
+    "pluralName": "etater",
+    "displayName": "Etat"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "Navn": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "Nettside": {
+      "type": "string",
+      "regex": "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$"
+    },
+    "Logo": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "Steger": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::steg.steg",
+      "mappedBy": "AnsvarligEtat"
+    }
+  }
+}

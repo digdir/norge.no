@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "begreper",
+  "info": {
+    "singularName": "begrep",
+    "pluralName": "begreper",
+    "displayName": "Begrep"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "Term": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Term"
+    },
+    "KortBeskrivelse": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "DetaljertForklaring": {
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

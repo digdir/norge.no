@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_blokk_advarsels",
+  "info": {
+    "displayName": "Advarsel"
+  },
+  "options": {},
+  "attributes": {
+    "Tittel": {
+      "type": "string"
+    },
+    "Innhold": {
+      "type": "text"
+    },
+    "Type": {
+      "type": "enumeration",
+      "enum": [
+        "Informasjon",
+        "Advarsel",
+        "Viktig"
+      ],
+      "default": "Informasjon"
+    }
+  }
+}

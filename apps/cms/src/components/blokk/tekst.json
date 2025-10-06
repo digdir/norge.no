@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_blokk_teksts",
+  "info": {
+    "displayName": "Tekst"
+  },
+  "options": {},
+  "attributes": {
+    "Innhold": {
+      "type": "blocks"
+    }
+  }
+}

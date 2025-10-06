@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "merkelapper",
+  "info": {
+    "singularName": "merkelapp",
+    "pluralName": "merkelapper",
+    "displayName": "Merkelapp"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "Navn": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Navn"
+    },
+    "Beskrivelse": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Steger": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::steg.steg",
+      "mappedBy": "Merkelapper"
+    }
+  }
+}

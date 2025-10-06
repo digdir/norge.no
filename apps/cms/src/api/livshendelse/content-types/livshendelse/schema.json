@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "livshendelser",
+  "info": {
+    "singularName": "livshendelse",
+    "pluralName": "livshendelser",
+    "displayName": "Livshendelse"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "Tittel": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Tittel"
+    },
+    "Beskrivelse": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Steger": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::steg.steg",
+      "mappedBy": "Livshendelse"
+    }
+  }
+}
