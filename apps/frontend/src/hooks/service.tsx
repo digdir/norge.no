@@ -1,7 +1,7 @@
 import {useQuery, type UseQueryResult} from '@tanstack/react-query';
-import {queryClient} from '@stores/query';
+import {queryClient} from '@packages/data-access/react-query/query-client';
 import {useStore} from '@nanostores/react';
-import type {CMSService} from '@packages/types';
+import type {CMSService} from '@packages/types/cms';
 
 type ErrorData = {details?: string; error?: string};
 

@@ -1,20 +1,16 @@
 ---
-
-import Layout from '@layouts/Layout.astro';
-import {PageLayout, SearchBar, QuickLinks, ServiceCategoryGrid, PopularServices, MainHero} from '@packages/ui/components';
-import styles from '@styles/pages/style.module.css';
+import { SearchBar, QuickLinks, ServiceCategoryGrid, PopularServices, MainHero} from '@packages/ui/components';
+import { RootLayout, PageLayout } from '@packages/ui/layouts';
 ---
 
-<Layout title="Norge.no - Offentlige tjenester">
+<RootLayout>
   <PageLayout client:load>
-    <main class={styles.main}>
       <MainHero client:load />
-        <div class={styles.searchSection}>
-            <SearchBar client:load />
-            <QuickLinks client:load />
+        <div>
+          <SearchBar client:load />
+          <QuickLinks client:load />
         </div>
         <ServiceCategoryGrid client:visible />
         <PopularServices client:visible />
-    </main>
   </PageLayout>
-</Layout>
+</RootLayout>

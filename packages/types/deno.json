@@ -1,6 +1,6 @@
 {
   "name": "@packages/types",
   "exports": {
-    ".": "./index.ts"
+    "./cms": "./cms/index.ts"
   }
 }

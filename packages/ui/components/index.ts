@@ -9,3 +9,4 @@ export {SiteMenu} from './site-menu/index.tsx';
 export {LanguageSelector} from './language-selector/index.tsx';
 export {SignIn} from './sign-in/index.tsx';
 export {MainHero} from './main-hero/index.tsx';
+export { LivshendelseSteg } from './livshendelse-steg/index.tsx';

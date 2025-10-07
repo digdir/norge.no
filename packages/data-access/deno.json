@@ -1,0 +1,7 @@
+{
+  "name": "@packages/data-access",
+  "exports": {
+    "./react-query/hooks": "./react-query/hooks/index.ts",
+    "./react-query/query-client": "./react-query/query-client/index.ts"
+  }
+}

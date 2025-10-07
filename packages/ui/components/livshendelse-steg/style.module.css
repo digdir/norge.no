@@ -1,0 +1,26 @@
+.stegContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 5rem;
+}
+
+.innhold {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.stegFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.merkelapper {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}

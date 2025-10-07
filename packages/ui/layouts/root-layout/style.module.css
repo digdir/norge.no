@@ -1,0 +1,14 @@
+body {
+  font-family: 'Inter', sans-serif;
+  font-feature-settings: 'cv05' 1;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr; 
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+}
