@@ -1,0 +1,1 @@
+export {Livshendelse} from './livshendelse/index.tsx';

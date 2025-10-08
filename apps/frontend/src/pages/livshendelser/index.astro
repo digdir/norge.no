@@ -1,0 +1,28 @@
+---
+import { Heading, Link, List, Paragraph } from '@digdir/designsystemet-react';
+import { RootLayout, PageLayout } from '@packages/ui/layouts';
+import type { Livshendelse } from '@packages/types/cms/livshendelse';
+
+
+const response = await fetch(`${Astro.url.origin}/api/cms/livshendelser`);
+const jsonResponse = (await response.json()) as { data: Livshendelse[] };
+const livshendelser: Livshendelse[] = jsonResponse.data || [];
+---
+<RootLayout>
+  <PageLayout client:load>
+    <div>
+      <Heading>Livshendelser</Heading>
+      {livshendelser.length > 0 ? (
+        <List.Unordered>
+          {livshendelser.map((hendelse) => (
+            <List.Item key={hendelse.Slug}>
+              <Link href={`/livshendelser/${hendelse.Slug}`}>{hendelse.Tittel}</Link>
+            </List.Item>
+          ))}
+        </List.Unordered>
+      ) : (
+        <Paragraph>Ingen livshendelser funnet.</Paragraph>
+      )}
+    </div>
+  </PageLayout>
+</RootLayout>

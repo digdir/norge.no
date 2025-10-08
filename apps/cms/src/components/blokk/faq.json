@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_blokk_faqs",
+  "info": {
+    "displayName": "FAQ"
+  },
+  "options": {},
+  "attributes": {
+    "Sporsmal": {
+      "type": "string"
+    },
+    "Svar": {
+      "type": "blocks"
+    }
+  }
+}

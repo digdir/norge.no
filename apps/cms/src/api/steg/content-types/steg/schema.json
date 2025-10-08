@@ -1,0 +1,77 @@
+{
+  "kind": "collectionType",
+  "collectionName": "steger",
+  "info": {
+    "singularName": "steg",
+    "pluralName": "steger",
+    "displayName": "Steg",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "Tittel": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Tittel"
+    },
+    "Sammendrag": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Innhold": {
+      "type": "dynamiczone",
+      "components": [
+        "blokk.tekst",
+        "blokk.faq",
+        "blokk.advarsel"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Livshendelse": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::livshendelse.livshendelse",
+      "inversedBy": "Steger"
+    },
+    "AnsvarligEtat": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::etat.etat",
+      "inversedBy": "Steger"
+    },
+    "Merkelapper": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::merkelapp.merkelapp",
+      "inversedBy": "Steger"
+    },
+    "RelarterteSteg": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::steg.steg"
+    }
+  }
+}

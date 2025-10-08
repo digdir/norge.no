@@ -427,6 +427,246 @@ export interface ApiArtikkelArtikkel extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBegrepBegrep extends Struct.CollectionTypeSchema {
+  collectionName: 'begreper';
+  info: {
+    displayName: 'Begrep';
+    pluralName: 'begreper';
+    singularName: 'begrep';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    DetaljertForklaring: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    KortBeskrivelse: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::begrep.begrep'>;
+    publishedAt: Schema.Attribute.DateTime;
+    Slug: Schema.Attribute.UID<'Term'>;
+    Term: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEtatEtat extends Struct.CollectionTypeSchema {
+  collectionName: 'etater';
+  info: {
+    displayName: 'Etat';
+    pluralName: 'etater';
+    singularName: 'etat';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::etat.etat'>;
+    Logo: Schema.Attribute.Media<'images' | 'files'>;
+    Navn: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Nettside: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    Steger: Schema.Attribute.Relation<'oneToMany', 'api::steg.steg'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLivshendelseLivshendelse
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'livshendelser';
+  info: {
+    displayName: 'Livshendelse';
+    pluralName: 'livshendelser';
+    singularName: 'livshendelse';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    Beskrivelse: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::livshendelse.livshendelse'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    Slug: Schema.Attribute.UID<'Tittel'>;
+    Steger: Schema.Attribute.Relation<'oneToMany', 'api::steg.steg'>;
+    Tittel: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMerkelappMerkelapp extends Struct.CollectionTypeSchema {
+  collectionName: 'merkelapper';
+  info: {
+    displayName: 'Merkelapp';
+    pluralName: 'merkelapper';
+    singularName: 'merkelapp';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    Beskrivelse: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::merkelapp.merkelapp'
+    >;
+    Navn: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    Slug: Schema.Attribute.UID<'Navn'>;
+    Steger: Schema.Attribute.Relation<'manyToMany', 'api::steg.steg'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStegSteg extends Struct.CollectionTypeSchema {
+  collectionName: 'steger';
+  info: {
+    description: '';
+    displayName: 'Steg';
+    pluralName: 'steger';
+    singularName: 'steg';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    AnsvarligEtat: Schema.Attribute.Relation<'manyToOne', 'api::etat.etat'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Innhold: Schema.Attribute.DynamicZone<
+      ['blokk.tekst', 'blokk.faq', 'blokk.advarsel']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Livshendelse: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::livshendelse.livshendelse'
+    >;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::steg.steg'>;
+    Merkelapper: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::merkelapp.merkelapp'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    RelarterteSteg: Schema.Attribute.Relation<'oneToMany', 'api::steg.steg'>;
+    Sammendrag: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Slug: Schema.Attribute.UID<'Tittel'>;
+    Tittel: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -937,6 +1177,11 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::artikkel.artikkel': ApiArtikkelArtikkel;
+      'api::begrep.begrep': ApiBegrepBegrep;
+      'api::etat.etat': ApiEtatEtat;
+      'api::livshendelse.livshendelse': ApiLivshendelseLivshendelse;
+      'api::merkelapp.merkelapp': ApiMerkelappMerkelapp;
+      'api::steg.steg': ApiStegSteg;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

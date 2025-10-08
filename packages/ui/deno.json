@@ -1,6 +1,8 @@
 {
   "name": "@packages/ui",
   "exports": {
-    "./components/*": "./components/*"
+    "./components": "./components/index.ts",
+    "./layouts": "./layouts/index.ts",
+    "./pages": "./pages/index.ts"
   }
 }

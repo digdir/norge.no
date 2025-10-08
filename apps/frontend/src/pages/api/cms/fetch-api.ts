@@ -1,46 +1,39 @@
-interface ServerFetchProps {
+export interface StrapiFetchProps {
   strapiApiUrl: string;
   strapiApiKey: string;
   endpoint: string;
+  rawQuery?: string;
   query?: Record<string, string>;
   wrappedByKey?: string;
   wrappedByList?: boolean;
   populate?: string | string[];
 }
 
-/**
- * Fetches data from the Strapi API using server-side credentials.
- */
 export async function fetchStrapiDataFromServer<T>({
   strapiApiUrl,
   strapiApiKey,
   endpoint,
-  query,
+  rawQuery,
   wrappedByKey,
   wrappedByList,
   populate,
-}: ServerFetchProps): Promise<T> {
+}: StrapiFetchProps): Promise<T> {
   if (endpoint.startsWith('/')) {
     endpoint = endpoint.slice(1);
   }
 
   const url = new URL(`${strapiApiUrl}/api/${endpoint}`);
+  const searchParams = new URLSearchParams(rawQuery);
 
   if (populate) {
     if (Array.isArray(populate)) {
-      populate.forEach((p) => url.searchParams.append('populate', p));
+      populate.forEach((p, index) => searchParams.append(`populate[${index}]`, p));
     } else {
-      url.searchParams.append('populate', populate);
+      searchParams.append('populate', populate);
     }
-  } else {
-    url.searchParams.append('populate', 'icon');
   }
 
-  if (query) {
-    Object.entries(query).forEach(([key, value]) => {
-      url.searchParams.append(key, value);
-    });
-  }
+  url.search = searchParams.toString();
 
   const headers = {
     Authorization: `Bearer ${strapiApiKey}`,
@@ -61,10 +54,10 @@ export async function fetchStrapiDataFromServer<T>({
     );
   }
 
-  let data = await res.json();
+  let data: StrapiFetchProps = await res.json();
 
   if (wrappedByKey) {
-    data = data[wrappedByKey];
+    data = data[wrappedByKey] as StrapiFetchProps;
   }
 
   if (wrappedByList && Array.isArray(data)) {

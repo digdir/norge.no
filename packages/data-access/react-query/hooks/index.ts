@@ -1,0 +1,1 @@
+export {useLivshendelse} from './livshendelse.ts'

@@ -1,0 +1,9 @@
+---
+import { RootLayout } from '@packages/ui/layouts';
+import { Livshendelse } from '@packages/ui/pages';
+const { slug } = Astro.params;
+
+---
+<RootLayout client:load>
+    <Livshendelse slug={slug} client:load />
+</RootLayout>
