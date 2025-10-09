@@ -22,5 +22,6 @@
       }
     ],
     "verbatimModuleSyntax": true,
+    "moduleResolution": "bundler"
   }
 }
