@@ -1,16 +1,39 @@
 ---
 import { SearchBar, QuickLinks, ServiceCategoryGrid, PopularServices, MainHero} from '@packages/ui/components';
-import { RootLayout, PageLayout } from '@packages/ui/layouts';
+import { PageLayout } from '@packages/ui/layouts';
+import { Heading, List, Link, Paragraph } from '@digdir/designsystemet-react';
+import RootLayout from '../layouts/RootLayout.astro';
+import type { Livshendelse } from '@packages/types/cms';
+import '@digdir/designsystemet-css';
+import '@digdir/designsystemet-theme';
+
+const response = await fetch(`${Astro.url.origin}/api/cms/livshendelser`);
+const jsonResponse = (await response.json()) as { data: Livshendelse[] };
+const livshendelser: Livshendelse[] = jsonResponse.data || [];
 ---
 
 <RootLayout>
-  <PageLayout client:load>
+  <PageLayout>
       <MainHero client:load />
-        <div>
-          <SearchBar client:load />
-          <QuickLinks client:load />
-        </div>
-        <ServiceCategoryGrid client:visible />
-        <PopularServices client:visible />
+      <div>
+        <SearchBar client:load />
+        <QuickLinks client:load />
+      </div>
+      <ServiceCategoryGrid client:visible />
+      <PopularServices client:visible />
+      <div>
+        <Heading>Livshendelser</Heading>
+        {livshendelser.length > 0 ? (
+          <List.Unordered>
+            {livshendelser.map((hendelse) => (
+              <List.Item key={hendelse.Slug}>
+                <Link href={`/livshendelser/${hendelse.Slug}`}>{hendelse.Tittel}</Link>
+              </List.Item>
+            ))}
+          </List.Unordered>
+        ) : (
+          <Paragraph>Ingen livshendelser funnet.</Paragraph>
+        )}
+      </div>
   </PageLayout>
 </RootLayout>

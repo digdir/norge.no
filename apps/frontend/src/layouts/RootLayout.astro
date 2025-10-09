@@ -1,0 +1,41 @@
+---
+import { Divider } from "@digdir/designsystemet-react";
+import { Header } from "@packages/ui/components/header";
+import { Footer } from "@packages/ui/components/footer";
+import { queryClient } from "@packages/data-access/react-query/query-client";
+import { QueryClientProvider } from "@tanstack/react-query";
+
+import "@digdir/designsystemet-css";
+import "@digdir/designsystemet-theme";
+import styles from "./style.module.css";
+
+interface Props {
+    title?: string;
+}
+
+const queryClientInstance = queryClient.get();
+const { title = 'Norge.no' } = Astro.props;
+---
+<!doctype html>
+<html lang="nb">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link
+          rel="stylesheet"
+          href="https://altinncdn.no/fonts/inter/v4.1/inter.css"
+          integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
+          crossorigin="anonymous"
+        />
+        <title>{title}</title>
+    </head>
+    <QueryClientProvider client={queryClientInstance}>
+      <body class={styles.container}>
+        <Header />
+        <Divider />
+        <slot/>
+        <Footer />
+      </body>
+    </QueryClientProvider>
+</html>
