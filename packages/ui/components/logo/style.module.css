@@ -6,5 +6,5 @@
 }
 
 .logo:visited {
-  color: inherit;
+  all: unset;
 }

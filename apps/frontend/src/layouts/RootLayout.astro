@@ -8,6 +8,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import "@digdir/designsystemet-css";
 import "@digdir/designsystemet-theme";
 import styles from "./style.module.css";
+import Posthog from "@components/posthog/posthog.astro";
 
 interface Props {
     title?: string;
@@ -28,6 +29,7 @@ const { title = 'Norge.no' } = Astro.props;
           integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
           crossorigin="anonymous"
         />
+        <Posthog />
         <title>{title}</title>
     </head>
     <QueryClientProvider client={queryClientInstance}>
