@@ -1,7 +1,6 @@
-import {fetchStrapiDataFromServer} from './fetch-api.ts';
+import {safeFetchStrapiData} from './fetch-api.ts';
 
 import type {APIRoute} from 'astro';
-import type {StrapiFetchProps} from './fetch-api.ts';
 
 export const GET: APIRoute = async ({params, request, locals}) => {
   const runtime = locals.runtime;
@@ -43,23 +42,20 @@ export const GET: APIRoute = async ({params, request, locals}) => {
     }
   });
   
-  try {
-    const data = await fetchStrapiDataFromServer<StrapiFetchProps>({
-      strapiApiUrl,
-      strapiApiKey,
-      endpoint,
-      rawQuery: clientQueryString,
-      wrappedByKey: clientWrappedByKey,
-      wrappedByList: clientWrappedByList,
-      populate: clientPopulate,
-    });
-    return new Response(JSON.stringify(data), {
-      status: 200,
-      headers: {'Content-Type': 'application/json'},
-    });
-  } catch (error) {
-    return new Response(JSON.stringify({error: `Failed to retrieve data: ${error}`}), {
-      status: 502,
-    });
-  }
+  const result = await safeFetchStrapiData<any>({
+    strapiApiUrl,
+    strapiApiKey,
+    endpoint,
+    rawQuery: clientQueryString,
+    wrappedByKey: clientWrappedByKey,
+    wrappedByList: clientWrappedByList,
+    populate: clientPopulate,
+  });
+  return new Response(
+    JSON.stringify({ ...result.data, error: result.error }),
+    {
+      status: result.status,
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
 };

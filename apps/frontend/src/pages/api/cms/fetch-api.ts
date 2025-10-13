@@ -1,3 +1,5 @@
+import type { Livshendelse } from "@packages/types/cms";
+
 export interface StrapiFetchProps {
   strapiApiUrl: string;
   strapiApiKey: string;
@@ -7,6 +9,17 @@ export interface StrapiFetchProps {
   wrappedByKey?: string;
   wrappedByList?: boolean;
   populate?: string | string[];
+}
+
+export interface StrapiResult<T> {
+  data: T | null;
+  error?: string;
+  status: number;
+}
+
+export interface LivshendelserResult {
+  data: Livshendelse[] | null;
+  error?: string;
 }
 
 export async function fetchStrapiDataFromServer<T>({
@@ -54,10 +67,10 @@ export async function fetchStrapiDataFromServer<T>({
     );
   }
 
-  let data: StrapiFetchProps = await res.json();
+  let data: any = await res.json();
 
   if (wrappedByKey) {
-    data = data[wrappedByKey] as StrapiFetchProps;
+    data = data[wrappedByKey];
   }
 
   if (wrappedByList && Array.isArray(data)) {
@@ -65,4 +78,25 @@ export async function fetchStrapiDataFromServer<T>({
   }
 
   return data as T;
+}
+
+export async function safeFetchStrapiData<T>(props: StrapiFetchProps, timeoutMs = 5000): Promise<StrapiResult<T>> {
+  const controller = new AbortController();
+  const to = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const data = await fetchStrapiDataFromServer<T>({
+      ...props,
+    });
+    return { data, status: 200 };
+  } catch (e: any) {
+    const aborted = e?.name === 'AbortError';
+    return {
+      data: null,
+      error: aborted ? 'Timeout contacting CMS' : (e?.message || 'Unknown Strapi error'),
+      status: aborted ? 504 : 502,
+    };
+  } finally {
+    clearTimeout(to);
+  }
 }
