@@ -1,6 +1,7 @@
 ---
 name: '🌟 Feature Request'
 about: Foreslå en ny funksjon eller forbedring.
+labels: ["💡 feature", "🚀 beta norge.no"]
 ---
 
 ## 🤔 Problemstilling / Behov
@@ -29,3 +30,11 @@ Beskrivelse av eventuelle alternative løsninger eller midlertidige løsninger s
 
 - Design: [Link til Figma/Sketch]
 - Eksempler: [Link til relevante eksempler eller inspirasjon]
+
+## Guide
+- Feature request (Funksjonsønske)  
+Hva: En idé til en helt ny funksjon eller en forbedring.  
+Når: Når du vil foreslå noe nytt som produktet ikke kan gjøre i dag.  
+Eksempel: "Jeg ønsker å kunne logge inn med Vipps."  
+
+- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
