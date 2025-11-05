@@ -1,6 +1,6 @@
 ---
-name: '🚀 Epic'
-about: Opprett en epic for å beskrive et større initiativ eller prosjekt.
+name: '🏁 Milestone'
+about: Opprett en milestone for å samle saker (issues) og pull requests mot en felles tidsfrist.
 labels: ["🚀 beta norge.no"]
 ---
 
