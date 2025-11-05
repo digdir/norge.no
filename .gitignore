@@ -279,3 +279,8 @@ dist
 **/build
 **/.strapi-updater.json
 **/.strapi-cloud.json
+
+############################
+# Python 
+############################
+**/__pycache__/

@@ -1,6 +1,7 @@
 ---
 name: '🐞 Bug Report'
 about: Rapporter en feil eller et problem.
+labels: ["🐞 bug", "🚀 beta norge.no"]
 ---
 
 ## 🐞 Sammendrag av feilen
@@ -36,3 +37,11 @@ Hvis relevant, legg ved skjermbilder, videoer eller logger som kan hjelpe med å
 ## 💡 Eventuell tilleggsinformasjon
 
 Legg ved annen informasjon som kan være nyttig for å forstå og løse problemet.
+
+## Guide
+- Bug (Feil)  
+Hva: Noe som er ødelagt eller ikke virker som det skal.  
+Når: Når du finner en feil, en krasj, eller at noe gir feil resultat.  
+Eksempel: "Appen krasjer når jeg laster opp et bilde."  
+
+- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)

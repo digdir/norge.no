@@ -1,6 +1,7 @@
 ---
 name: '📝 Issue'
 about: Opprett en issue for å beskrive en oppgave eller et problem.
+labels: ["🚀 beta norge.no"]
 ---
 
 ## 📝 Beskrivelse
@@ -25,3 +26,11 @@ Kort beskrivelse av hva som skal gjøres.
 ## 💡 Kontekst / Hvorfor
 
 Legg ved annen informasjon som kan være nyttig for å forstå oppgaven.
+
+## Guide
+- Issue (Sak) 📄  
+Hva: En generell oppgave som må gjøres.  
+Når: Brukes for alt arbeid som ikke er en feil eller et nytt funksjonsønske.  
+Eksempel: "Oppdatere dokumentasjonen" eller "Rydde opp i server-koden."  
+
+- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)

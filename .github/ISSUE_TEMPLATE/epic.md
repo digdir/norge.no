@@ -1,6 +1,7 @@
 ---
 name: '🚀 Epic'
 about: Opprett en epic for å beskrive et større initiativ eller prosjekt.
+labels: ["☂ epic", "🚀 beta norge.no"]
 ---
 
 ## 🎯 Sammendrag / Hypotese
@@ -47,3 +48,11 @@ En beskrivelse av hva som er inkludert og ikke inkludert i omfanget av denne epi
 - **Produkteier:** @navn
 - **Design (UX/UI):** @navn
 - **Tech Lead:** @navn
+
+## Guide
+- Epic (Episk sak)  
+Hva: En veldig stor "samlemappe" for et helt initiativ.  
+Når: Brukes til å gruppere mange mindre saker (Bugs, Features) som hører sammen under ett stort mål.  
+Eksempel: "Lansere den nye mobil-appen" (som inneholder 15 andre saker).  
+
+- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
