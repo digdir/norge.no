@@ -1,50 +1,73 @@
-name: Build, Push, and Deploy Strapi to Azure
+name: Build and deploy Node.js app to Azure Web App - strapi-cms-test-app
 
 on:
   push:
     branches:
-      - main  # Or your production branch
-    paths:
-      # This ensures the action only runs when CMS code changes
-      - 'apps/cms/**'
-      - '.github/workflows/cms.yml'
-
-env:
-  IMAGE_NAME: ${{ secrets.ACR_LOGIN_SERVER }}/strapi-image:${{ github.sha }}
+      - main
+  workflow_dispatch:
 
 jobs:
-  build-and-push:
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Log in to Azure Container Registry
-        uses: azure/docker-login@v1
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
         with:
-          login-server: ${{ secrets.ACR_LOGIN_SERVER }}
-          username: ${{ secrets.ACR_USERNAME }}
-          password: ${{ secrets.ACR_PASSWORD }}
+          node-version: '22.x'
+          cache: 'pnpm'
 
-      - name: Build and push Docker image
+      # --- ADDED: Set up pnpm ---
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10.8.1
+
+      # --- ADDED: Install, Build, and Prepare Production node_modules ---
+      - name: Install dependencies and Build
         run: |
-          # This line has been fixed to set the correct Docker build context
-          docker build ./apps/cms -f apps/cms/Dockerfile -t $IMAGE_NAME
-          docker push $IMAGE_NAME
+          pnpm install --prefix apps/cms
+          pnpm run build --prefix apps/cms
+      
+      - name: Install Production Dependencies
+        run: |
+          pnpm install --prefix apps/cms --prod
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: node-app
+          path: ./apps/cms
 
   deploy:
-      runs-on: ubuntu-latest
-      needs: build-and-push
-      steps:
-        - name: Deploy to Azure App Service
-          uses: azure/webapps-deploy@v2
-          with:
-            # Uses the Publish Profile for authentication
-            publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-            
-            # Overrides the placeholder image
-            app-name: ${{ secrets.AZURE_APP_SERVICE_NAME }}
-            images: ${{ env.IMAGE_NAME }}
-            
-            # Sets the correct startup command
-            startup-command: 'pnpm run start'
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: node-app
+      
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_7B80AC2107AA43519DE93D47CF80C5F3 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_69B2E28679A1404FB69AB388E4541A6C }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_95B1DEE1EC7E4BA9A28BF4E05D9DDC69 }}
+
+      - name: 'Deploy to Azure Web App'
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'strapi-cms-test-app'
+          slot-name: 'Production'
+          package: .
+          skip-app-build: true
