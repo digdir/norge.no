@@ -29,12 +29,14 @@ jobs:
       # --- ADDED: Install, Build, and Prepare Production node_modules ---
       - name: Install dependencies and Build
         run: |
-          pnpm install --prefix apps/cms
-          pnpm run build --prefix apps/cms
+          cd apps/cms
+          pnpm install
+          pnpm run build
       
       - name: Install Production Dependencies
         run: |
-          pnpm install --prefix apps/cms --prod
+          cd apps/cms
+          pnpm install --prod
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
