@@ -71,4 +71,3 @@ jobs:
           app-name: 'strapi-cms-test-app'
           slot-name: 'Production'
           package: .
-          skip-app-build: true
