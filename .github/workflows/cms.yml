@@ -1,4 +1,4 @@
-name: Build and deploy Node.js app to Azure Web App - strapi-cms-test-app
+name: Build and deploy Strapi to Azure Web App
 
 on:
   push:
@@ -21,6 +21,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
 
       - name: Set up Node.js version
         uses: actions/setup-node@v6
