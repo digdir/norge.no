@@ -42,7 +42,9 @@ jobs:
           pnpm run build
 
       - name: Prepare production deployment
-        run: pnpm --filter cms deploy --prod --legacy ./deploy
+        run: |
+          cd apps/cms
+          pnpm deploy --prod --legacy ./deploy
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
