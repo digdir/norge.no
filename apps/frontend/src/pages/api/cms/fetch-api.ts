@@ -35,7 +35,11 @@ export async function fetchStrapiDataFromServer<T>({
     endpoint = endpoint.slice(1);
   }
 
-  const url = new URL(`${strapiApiUrl}/api/${endpoint}`);
+  let fullStrapiUrl = strapiApiUrl;
+  if (!/^https?:\/\//i.test(fullStrapiUrl)) {
+    fullStrapiUrl = `https://${fullStrapiUrl}`;
+  }
+  const url = new URL(`${fullStrapiUrl}/api/${endpoint}`);
   const searchParams = new URLSearchParams(rawQuery);
 
   if (populate) {
