@@ -41,10 +41,8 @@ jobs:
           pnpm install
           pnpm run build
 
-      - name: Install Production Dependencies
-        run: |
-          cd apps/cms
-          pnpm install --prod
+      - name: Prepare production deployment
+        run: pnpm --filter cms deploy --prod --legacy ./deploy
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
