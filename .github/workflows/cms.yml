@@ -32,6 +32,7 @@ jobs:
         with:
           node-version: "${{ env.NODE_VERSION }}"
           cache: "pnpm"
+          cache-dependency-path: apps/cms/pnpm-lock.yaml
 
       # --- ADDED: Install, Build, and Prepare Production node_modules ---
       - name: Install dependencies and Build
