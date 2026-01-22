@@ -125,4 +125,4 @@ To get started with the project, follow these steps:
 
 Learn how you can contribute to this project by reading our Code of Conduct and Contributing Guide.
 
-[Contributing](/contributing.md)
+[Contributing](https://github.com/digdir/norge.no/blob/main/CONTRIBUTING.md)
