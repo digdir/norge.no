@@ -1,0 +1,82 @@
+.container {
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Changed from center to accommodate text height if needed */
+    gap: 2rem;
+    background-color: #e3f2fa; /* Altinn light blue matching screenshot */
+    border-radius: 4px;
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+}
+
+.media {
+    flex: 0 0 auto;
+}
+
+.image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 1rem; /* Adjust alignment to visual center if description is long */
+}
+
+.content {
+    flex: 1;
+}
+
+.heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.linkIcon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.linkIcon:hover {
+    text-decoration: underline;
+}
+
+.icon {
+    font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .links {
+        justify-content: center;
+    }
+}

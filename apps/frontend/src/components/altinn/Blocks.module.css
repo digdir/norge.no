@@ -1,0 +1,135 @@
+.news-container {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    max-width: 800px;
+}
+
+.news-heading {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.news-article {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.news-article:last-child {
+    border-bottom: none;
+}
+
+.news-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.news-link {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+}
+
+.news-link:hover {
+    color: #0062ba;
+    border-bottom-color: #0062ba;
+}
+
+.news-intro {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+}
+
+.news-archive-link {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    color: #0062ba;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+.news-archive-link:hover {
+    text-decoration: underline;
+}
+
+/* Do You Need Help Block */
+.help-container {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.help-card {
+    display: flex;
+    align-items: center;
+    background-color: #eef7fc; /* Light blue background like in screenshot */
+    border-radius: 8px;
+    padding: 2rem;
+    gap: 2rem;
+    max-width: 900px;
+    width: 100%;
+    flex-direction: row;
+}
+
+.help-image-container {
+    flex-shrink: 0;
+}
+
+.help-image {
+    width: 150px;
+    height: auto;
+    border-radius: 50%; /* Circular image mask if needed, or fits design */
+}
+
+.help-content {
+    flex-grow: 1;
+}
+
+.help-heading {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.help-text {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.help-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.help-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.help-link:hover {
+    text-decoration: underline;
+}
+
+.help-icon {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .help-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .help-links {
+        justify-content: center;
+    }
+}

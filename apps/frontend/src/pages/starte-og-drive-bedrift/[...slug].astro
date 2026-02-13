@@ -1,0 +1,192 @@
+---
+import { fetchUmbracoContent } from '../../api/umbraco/client';
+import { PageLayout } from '@packages/ui/layouts';
+import RootLayout from '../../layouts/RootLayout.astro';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { LatestNewsBlock, DoYouNeedHelpBlock } from '../../components/altinn';
+const { slug } = Astro.params;
+const path = `/starte-og-drive-bedrift/${slug || ''}`;
+
+let pageData;
+try {
+  pageData = await fetchUmbracoContent(path);
+} catch (e) {
+  return Astro.redirect('/404');
+}
+
+const contentType = pageData.contentType;
+const props = pageData.properties;
+---
+
+{contentType === 'sectionPage' ? (
+  <RootLayout title={props.heading}>
+      <div className="section-page">
+          <div className="jumbotron main-header" style={props.backgroundImage ? `background-image: url(${props.backgroundImage.url})` : ''}>
+              <div className="container header-container">
+                  <Heading level={1} data-size="xl" className="page-title">{props.heading}</Heading>
+                  
+                   {props.themePageArea && (
+                      <ul className="featured-links">
+                           {props.themePageArea.map((item: any) => (
+                               <li key={item.id}>
+                                   <a href={item.route.path} className="featured-link">{item.name}</a>
+                               </li>
+                           ))}
+                      </ul>
+                   )}
+
+                   {props.goToLinkLocation && (
+                       <div className="goto-link-wrapper">
+                           <a href={props.goToLinkLocation.url} className="featured-link-button">
+                               {props.goToLinkText} <span>&rarr;</span>
+                           </a>
+                       </div>
+                   )}
+              </div>
+          </div>
+
+          <div class="container main-content">
+              {props.themeArea?.contentData && (
+                <div class="accordion">
+                    {props.themeArea.contentData.map((block: any, index: number) => (
+                         <details key={index} class="accordion-item">
+                             <summary class="accordion-header">{block.heading}</summary>
+                             <div class="accordion-content">
+                                 <ul class="accordion-list">
+                                     {block.themePageArea?.map((link: any) => (
+                                         <li key={link.id}>
+                                             <a href={link.route.path}>{link.name}</a>
+                                         </li>
+                                     ))}
+                                 </ul>
+                             </div>
+                         </details>
+                    ))}
+                </div>
+              )}
+          </div>
+          
+          {props.bottomArea && (
+                        <div class="container bottom-area">
+                {props.bottomArea.map((block: any, index: number) => {
+                    if (block.contentType === 'latestNewsBlock') {
+                        return <LatestNewsBlock key={index} {...block} />;
+                    }
+                    if (block.contentType === 'doYouNeedHelpBlock') {
+                        return <DoYouNeedHelpBlock key={index} {...block} />;
+                    }
+                    return null;
+                })}
+            </div>
+          )}
+      </div>
+  </RootLayout>
+) : (
+  <RootLayout title={props.metaTitle || pageData.name}>
+    <PageLayout client:load>
+      <Heading level={1} data-size="xl">{props.metaTitle || pageData.name}</Heading>
+      <Paragraph data-size="lg" className="ingress">{props.mainIntro}</Paragraph>
+      
+      <div set:html={props.mainBody?.markup} />
+    </PageLayout>
+  </RootLayout>
+)}
+
+<style>
+    .section-page {
+        font-family: 'Inter', sans-serif;
+    }
+    .jumbotron {
+        background-color: #f4f6f8;
+        padding: 4rem 1rem;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right bottom;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid #b3b3b3;
+    }
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    .header-container {
+       max-width: 1200px; /* Aligned with design */
+    }
+    .page-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: #1a1a1a;
+    }
+    .featured-links {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem 0;
+        width: 100%;
+        max-width: 500px;
+    }
+    .featured-links li {
+        margin-bottom: 0;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #000;
+    }
+    .featured-links li:last-child {
+        /* Design shows border on last item too */
+    }
+    .featured-link {
+        font-weight: 600;
+        text-decoration: none;
+        color: #1a1a1a;
+        font-size: 1.1rem;
+        display: block;
+    }
+    .featured-link:hover {
+        text-decoration: underline;
+    }
+    .goto-link-wrapper {
+        margin-top: 1rem;
+    }
+    .featured-link-button {
+        font-weight: 700;
+        text-decoration: none;
+        color: #0062ba;
+        font-size: 1.25rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .featured-link-button:hover {
+        text-decoration: underline;
+    }
+    .accordion-list {
+        list-style: none;
+        padding-left: 0;
+    }
+    .accordion-item {
+        border-bottom: 1px solid #e0e0e0;
+        padding: 1rem 0;
+    }
+    .accordion-header {
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 1.25rem;
+        list-style: none;
+        margin-bottom: 0.5rem;
+        color: #1a1a1a;
+    }
+    .accordion-content {
+        padding: 0.5rem 0 0.75rem;
+    }
+    .accordion-list li {
+        margin-bottom: 0.5rem;
+    }
+    .accordion-list a {
+        text-decoration: none;
+        color: #1a1a1a;
+        font-weight: 400;
+    }
+    .accordion-list a:hover {
+        text-decoration: underline;
+    }
+</style>
