@@ -1,0 +1,123 @@
+{
+  "_id": "b6cbd50e-ebd5-4d63-a1e5-7cf92e031945",
+  "_path": "/starte-og-drive/innholdskategorier/arbeidsforhold/lonn/telefon-internett-ek-tjenester",
+  "language": "nb_NO",
+  "createdTime": "2023-10-09T12:45:09.97Z",
+  "modifiedTime": "2023-11-15T11:27:35.953Z",
+  "data": {
+    "title": "Telefon/internett (EK-tjenester)",
+    "ingress": "Dekning av telefon- og/eller internett-kostnader (EK-tjenester) for ansatte som kan bruke dette privat, må innberettes som en skattemessig fordel. Det maksimale skattepliktige beløpet er det samme uavhengig av antall tjenester du som arbeidsgiver dekker.",
+    "lastUpdated": "2023-04-02",
+    "articleType": null,
+    "contentOwner": [
+      {
+        "displayName": "Skatteetaten",
+        "data": {
+          "email": "kontakt@skatt.no"
+        }
+      }
+    ],
+    "tags": [],
+    "nace": ["ALL"],
+    "unitType": ["ALL"],
+    "noOfEmployees": ["ALL"]
+  },
+  "atoms": [
+    {
+      "_id": "b61b0c39-5fd7-49fa-8307-8f19230c405a",
+      "type": "no.brreg.rettfrastart:atom",
+      "data": {
+        "title": "Beskatning av EK-tjenester ",
+        "text": {
+          "processedHtml": "<ul>\n\t<li>Når arbeidsgiveren betaler fakturaen direkte, er fordelen satt til kroner 4 392 per år. Dette legges til inntekten som et skattepliktig beløp på den ansatte uavhengig av det aktuelle beløpet som er dekket av arbeidsgiver. Trekkpliktig beløp utgjør 366 kroner for hele og påbegynte måneder.</li>\n\t<li>Betaler arbeidstakeren fakturaen selv og får beløpet refundert som en utgiftsgodtgjørelse, er det de faktiske kostnader som skal beskattes, men maksimalt 4 392 kroner. Beløpet skal du rapportere inn den måneden du dekker regningen.</li>\n</ul>\n\n<p>Fordelen rapporteres vanligvis ved lønnskjøringen. De fleste lønnssystemer har funksjoner for å ivareta dette.</p>\n\n<p>Disse reglene gjelder kun for ansatte som har behov for EK-tjenester i arbeidet. Dekker du mobiltelefon eller internett til ansatte som ikke har tjenstlig bruk for dette, skal beløpet som dekkes beskattes fullt ut.</p>\n\n<p>Hvis den ansatte bruker egen telefon, og kan dokumentere hvilke samtaler eller tjenester som er jobbrelatert, kan arbeidsgiver dekke utgiftene uten at det medfører skatteplikt.&nbsp;Dette kan for eksempel gjøres med en spesifisert regning fra telefonselskapet. Spesifikasjonen må inneholde tilstrekkelig informasjon til at det er åpenbart at den aktuelle utgiften skyldes tjenstlig bruk, for eksempel dato, klokkeslett og oppringt nummer i minutter for hver samtale.</p>\n\n<p><a href=\"/site/starte-og-drive/master/starte-og-drive/linker/mer-hos-andre/skatteetaten/skatteetaten-om-beskatning-av-ek-tjenester-telefon-mv\" title=\"Skatteetaten om beskatning av EK-tjenester (telefon mv.)\" data-link-ref=\"2de29afd-53fb-475b-992a-3330933cc6fd\">Skatteetaten om beskatning av EK-tjenester (telefon mv.)</a></p>\n\n<p><a href=\"/site/starte-og-drive/master/starte-og-drive/linker/mer-hos-andre/skatteetaten/skatte-abc-om-elektronisk-kommunikasjon-skatteetaten\" title=\"Skatte-ABC om elektronisk kommunikasjon (Skatteetaten)\" data-link-ref=\"b63046fc-0cda-4327-9d42-e9d9e85e984c\">Skatte-ABC om elektronisk kommunikasjon (Skatteetaten)</a></p>\n",
+          "macros": [],
+          "links": [
+            {
+              "ref": "2de29afd-53fb-475b-992a-3330933cc6fd",
+              "content": {
+                "contentType": {
+                  "name": "no.brreg.rettfrastart:link"
+                },
+                "_id": "aaa64e97-29da-4023-8458-0c3bd4ad9104",
+                "displayName": "Skatteetaten om beskatning av EK-tjenester (telefon mv.)",
+                "data": {
+                  "link": "https://www.skatteetaten.no/rettskilder/type/kunngjoringer/beskatning-av-ekom-tjenester-telefon-mv/"
+                }
+              }
+            },
+            {
+              "ref": "b63046fc-0cda-4327-9d42-e9d9e85e984c",
+              "content": {
+                "contentType": {
+                  "name": "no.brreg.rettfrastart:link"
+                },
+                "_id": "72de38a8-f56c-4598-a2c4-911bbdf8c07a",
+                "displayName": "Skatte-ABC om elektronisk kommunikasjon (Skatteetaten)",
+                "data": {
+                  "link": "https://www.skatteetaten.no/rettskilder/type/handboker/skatte-abc/gjeldende/e-3-elektronisk-kommunikasjon-telefon-mv/"
+                }
+              }
+            }
+          ]
+        },
+        "tags": [],
+        "revenue": ["ALL"],
+        "noOfEmployees": ["lt50", "21-50", "11-20", "6-10", "1-5"],
+        "nace": ["ALL"],
+        "unitType": ["ALL"],
+        "contentOwner": [
+          {
+            "displayName": "Skatteetaten",
+            "data": {
+              "email": "kontakt@skatt.no"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "_id": "b24a0bc8-4173-4e75-86fa-8d2c7b801634",
+      "type": "no.brreg.rettfrastart:atom",
+      "data": {
+        "title": "Beskatning av fordel for telefon/internett i enkeltpersonforetak",
+        "text": {
+          "processedHtml": "<p>I et enkeltpersonforetak må innehaveren også skatte av fordel ved privat bruk av EK-tjenester, når dette er ført til fradrag i regnskapet. Dette gjøres ved å redusere det fradragsførte beløpet med inntil 4 392 kroner. På den måten økes det skattbare overskuddet i virksomheten.</p>\n\n<p><a href=\"/site/starte-og-drive/master/starte-og-drive/linker/mer-hos-andre/skatteetaten/skatteetaten-om-utgifter-til-telefon-bredband-m.m.i-enkeltpersonforetak\" title=\"Skatteetaten om utgifter til telefon, bredbånd m.m. i enkeltpersonforetak\" data-link-ref=\"656fa827-1506-48de-9f08-cc18f3e4a5ef\">Skatteetaten om utgifter til telefon, bredbånd m.m. i enkeltpersonforetak</a></p>\n",
+          "macros": [],
+          "links": [
+            {
+              "ref": "656fa827-1506-48de-9f08-cc18f3e4a5ef",
+              "content": {
+                "contentType": {
+                  "name": "no.brreg.rettfrastart:link"
+                },
+                "_id": "611d5ee2-0d7d-4bfe-999b-b3f00826037b",
+                "displayName": "Skatteetaten om utgifter til telefon, bredbånd m.m. i enkeltpersonforetak",
+                "data": {
+                  "link": "https://www.skatteetaten.no/bedrift-og-organisasjon/skatt/skattemelding-naringsdrivende/fradrag/fradragsveiviser-for-enk/kostnader-til-mobiltelefon-bredband-telefon-mm/"
+                }
+              }
+            }
+          ]
+        },
+        "tags": [],
+        "revenue": ["ALL"],
+        "noOfEmployees": ["ALL"],
+        "nace": ["ALL"],
+        "unitType": ["ENK"],
+        "contentOwner": [
+          {
+            "displayName": "Skatteetaten",
+            "data": {
+              "email": "kontakt@skatt.no"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "languagePaths": {
+    "nb": "starte-og-drive/innholdskategorier/arbeidsforhold/lonn/telefon-internett-ek-tjenester",
+    "en": "start-and-run-business/content-categories/working-conditions/pay/Reimbursement-of-telephone-and-internet-expenses",
+    "nn": ""
+  }
+}

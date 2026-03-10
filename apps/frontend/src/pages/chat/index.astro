@@ -1,0 +1,14 @@
+---
+import { PageLayout } from '@packages/ui/layouts';
+import RootLayout from '../../layouts/RootLayout.astro';
+import { ChatPage } from '@packages/ui/pages/chat-page';
+
+const { ASSISTANT_API_URL }  = Astro.locals.runtime.env || {};
+
+
+---
+<RootLayout>
+  <PageLayout>
+    <ChatPage assistantApiUrl={ASSISTANT_API_URL} client:load/>
+  </PageLayout>
+</RootLayout>

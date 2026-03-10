@@ -1,0 +1,108 @@
+.message {
+  display: flex;
+  gap: 1rem;
+}
+
+.userAvatar {
+  background-color: transparent;
+  border: #f60bdb42 solid 1.5px;
+  color: #f60bdb;
+  align-self: start;
+  margin-top: 5px;
+}
+
+.aiAvatar {
+  margin-top: 5px;
+  align-self: start;
+  background-color: transparent;
+  border: #08b0f359 solid 1.5px;
+  color: #08b0f3;
+}
+
+.aiMessage {
+  align-self: flex-start;
+}
+
+.userMessage {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+.aiMessageBubble {
+  background-color: #e0f7ff;
+  border: #08b0f359 solid 1.5px;
+  padding: 1rem;
+  border-radius: 1rem;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+.userMessageBubble {
+  background-color: #ffe0f76e;
+  border: #f60bdb42 solid 1.5px;
+  color: black;
+  padding: 1rem;
+  border-radius: 1rem;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.pendingMessage {
+  animation: fade 1.5s infinite ease-in-out;
+}
+.semanticContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.section h3 {
+  margin: 0;
+  color: #333;
+}
+
+.citationsContainer {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--fds-semantic-border-neutral-default, #cdd1d6);
+  font-size: 0.85rem;
+}
+
+.citationsTitle {
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+  color: var(--fds-semantic-text-neutral-subtle, #5c6574);
+}
+
+.citationsList {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--fds-semantic-text-neutral-subtle, #5c6574);
+}
+
+.citationItem {
+  margin-bottom: 0.25rem;
+}
+
+.citationDocType {
+  text-transform: capitalize;
+  font-weight: 500;
+}

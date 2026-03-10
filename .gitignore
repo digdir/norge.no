@@ -279,8 +279,12 @@ dist
 **/build
 **/.strapi-updater.json
 **/.strapi-cloud.json
+# LangChain
+**/.langchain.db
+**/*.db
+**/*.sqlite
+**/*.sqlite3
 
-############################
-# Python 
-############################
-**/__pycache__/
+# Vector DB
+apps/assistant/db/
+

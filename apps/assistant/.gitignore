@@ -1,0 +1,24 @@
+# Virtual Environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# IDE files
+.vscode/
+.idea/
+
+# Secrets
+.env
+*.env
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# LAngchain
+.langchain.db

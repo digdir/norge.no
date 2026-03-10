@@ -1,6 +1,5 @@
 import { useQuery, type UseQueryResult } from '@tanstack/react-query';
-import { useStore } from '@nanostores/react';
-import { queryClient } from '../query-client/index.ts';
+import { queryClient } from '../query-client/index.tsx';
 import type { Livshendelse } from '@packages/types/cms';
 
 const qs = (queryParams: object) => new URLSearchParams(queryParams as Record<string, string>).toString();
@@ -29,14 +28,12 @@ const fetchLivshendelseBySlug = async (slug: string): Promise<Livshendelse> => {
 };
 
 export const useLivshendelse = (slug: string): UseQueryResult<Livshendelse, Error> => {
-  const client = useStore(queryClient);
-
   return useQuery<Livshendelse, Error, Livshendelse, readonly [string, string]>(
     {
       queryKey: ['livshendelse', slug],
       queryFn: () => fetchLivshendelseBySlug(slug),
       enabled: !!slug,
     },
-    client,
+    queryClient,
   );
 };

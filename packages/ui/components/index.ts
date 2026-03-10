@@ -10,3 +10,6 @@ export {LanguageSelector} from './language-selector/index.tsx';
 export {SignIn} from './sign-in/index.tsx';
 export {MainHero} from './main-hero/index.tsx';
 export { LivshendelseSteg } from './livshendelse-steg/index.tsx';
+export { ChatMessage } from './chat-message/index.tsx';
+export { DynamicRenderer } from './dynamic-renderer/index.tsx';
+export { ChatPopup } from './chat-popup/index.tsx';

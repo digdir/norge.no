@@ -1,0 +1,591 @@
+[
+  {
+    "_id": "240a1628-9660-479b-895d-f5bee3a4d33d",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/arbeidsforhold/ansettelse/innleie-av-arbeidskraft",
+    "language": "nb_NO",
+    "createdTime": "2023-11-28T09:52:14.847Z",
+    "modifiedTime": "2023-11-28T09:53:39.136Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Innleie av arbeidskraft",
+      "ingress": "Hovedregelen i arbeidsmiljøloven er at arbeidstakere skal ansettes fast i virksomheten de jobber i. På visse vilkår og i visse situasjoner er det likevel mulig å benytte innleid arbeidskraft. For å leie inn lovlig er det et krav at bemanningsforetaket det leies inn fra er registrert hos Arbeidstilsynet.",
+      "lastUpdated": "2023-10-30",
+      "articleType": "article",
+      "contentOwner": [
+        {
+          "displayName": "Arbeidstilsynet",
+          "data": {
+            "email": "email@email.com"
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "b6cbd50e-ebd5-4d63-a1e5-7cf92e031945",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/arbeidsforhold/lonn/telefon-internett-ek-tjenester",
+    "language": "nb_NO",
+    "createdTime": "2023-10-09T12:45:09.97Z",
+    "modifiedTime": "2023-11-15T11:27:35.953Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Telefon/internett (EK-tjenester)",
+      "ingress": "Dekning av telefon- og/eller internett-kostnader (EK-tjenester) for ansatte som kan bruke dette privat, må innberettes som en skattemessig fordel. Det maksimale skattepliktige beløpet er det samme uavhengig av antall tjenester du som arbeidsgiver dekker.",
+      "lastUpdated": "2023-04-02",
+      "articleType": null,
+      "contentOwner": [
+        {
+          "displayName": "Skatteetaten",
+          "data": {
+            "email": "kontakt@skatt.no"
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "a95278f9-5fe9-44f9-9b0a-f35437d91bee",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/arbeidsforhold/helse-miljo-og-sikkerhet-hms/hms-arbeid-og-hms-krav",
+    "language": "nb_NO",
+    "createdTime": "2023-10-10T08:30:26.085Z",
+    "modifiedTime": "2023-11-29T11:04:28.196Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "HMS-arbeid og HMS-krav",
+      "ingress": "God internkontroll handler om å jobbe systematisk, veldokumentert og målbevisst med helse, miljø og sikkerhet. Hensikten med god internkontroll er å forebygge uønskede hendelser, oppnå et godt arbeidsmiljø, lavt sykefravær, høy sikkerhet, god lønnsomhet og minimale utslipp.",
+      "lastUpdated": "2023-05-22",
+      "articleType": "article",
+      "contentOwner": [
+        {
+          "displayName": "Arbeidstilsynet",
+          "data": {
+            "email": "email@email.com"
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "ecef96d6-db60-456f-8a3d-3ad505c3b5aa",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/arbeidsforhold/lonn/krav-til-reiseregning",
+    "language": "nb_NO",
+    "createdTime": "2023-10-09T13:14:01.542Z",
+    "modifiedTime": "2023-11-15T11:15:45.486Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Krav til reiseregning",
+      "ingress": "Det er strenge krav til innholdet i en reiseregning. Ved mangelfull informasjon risikerer mottakeren å måtte skatte for utbetalingene.",
+      "lastUpdated": "2023-04-02",
+      "articleType": null,
+      "contentOwner": [
+        {
+          "displayName": "Skatteetaten",
+          "data": {
+            "email": "kontakt@skatt.no"
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "00db863a-a677-4365-8137-e0ae2a99e2fc",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/arbeidsforhold/lonn/lonnskalkulator",
+    "language": "nb_NO",
+    "createdTime": "2024-04-11T07:54:19.678Z",
+    "modifiedTime": "2024-11-27T13:50:47.16Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Lønnskalkulator",
+      "ingress": "I denne kalkulatoren kan du fylle ut dine egne tall for kostnader som normalt påløper ved å ha en ansatt.",
+      "lastUpdated": null,
+      "articleType": "article",
+      "contentOwner": [
+        {
+          "displayName": "Starte og drive",
+          "data": {
+            "email": "https://www.altinn.no/hjelp/?form=1"
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "bab0622a-ecca-4a71-b291-83e3ca7a2dfe",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/drive-bedrift/statistikkplikter",
+    "language": "nb_NO",
+    "createdTime": "2023-09-26T12:26:04.591Z",
+    "modifiedTime": "2023-11-15T08:26:06.031Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Statistikkplikter",
+      "ingress": "Statistisk sentralbyrå (SSB) har hovedansvaret for å utarbeide offisiell statistikk i Norge. SSB trenger opplysninger fra virksomheter for å lage god og pålitelig statistikk som offentlige virksomheter, næringsliv, forskere og politikere kan bruke for å planlegge for framtiden. De fleste undersøkelsene blir gjennomført månedlig, kvartalsvis eller årlig. ",
+      "lastUpdated": "2022-12-15",
+      "articleType": null,
+      "contentOwner": [
+        {
+          "displayName": "Statistisk sentralbyrå",
+          "data": {
+            "email": null
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "805dc6ec-57ec-407e-8a9f-e286649355b9",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/eksport-og-import/eksport",
+    "language": "nb_NO",
+    "createdTime": "2023-10-10T08:06:13.387Z",
+    "modifiedTime": "2023-11-24T10:43:23.632Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Eksport",
+      "ingress": "De fleste varer og tjenester kan eksporteres fra Norge uten at du behøver å søke om tillatelse. Eksport til land utenfor EU skal i utgangspunktet forhåndsmeldes til Tolletaten. Vær imidlertid oppmerksom på at det kan være spesielle regler og restriksjoner på noen varer. I andre tilfeller kan det være restriksjoner mot å eksportere til et bestemt land, eller at mottakerlandet har restriksjoner mot import.",
+      "lastUpdated": "2023-03-26",
+      "articleType": "article",
+      "contentOwner": [
+        {
+          "displayName": "Tolletaten",
+          "data": {
+            "email": null
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "aa4e2ccc-8eda-476c-af68-a7feb841b65c",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/eksport-og-import/import",
+    "language": "nb_NO",
+    "createdTime": "2023-08-09T08:42:16.204Z",
+    "modifiedTime": "2023-11-24T09:26:28.247Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Import",
+      "ingress": "De fleste forbrukervarer kan importeres til Norge uten at det er krav om importlisens eller tillatelser. For en rekke varer og varetyper vil det imidlertid være krav om registrering og godkjenning, eller at det stilles særskilte krav til produktene.",
+      "lastUpdated": "2023-03-23",
+      "articleType": "article",
+      "contentOwner": [
+        {
+          "displayName": "Skatteetaten",
+          "data": {
+            "email": "kontakt@skatt.no"
+          }
+        },
+        {
+          "displayName": "Tolletaten",
+          "data": {
+            "email": null
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "72a75f61-6cc5-4d36-8bb9-f46700fc8f2a",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/regnskap-og-revisjon/dokumentmaler",
+    "language": "nb_NO",
+    "createdTime": "2023-10-04T13:15:43.463Z",
+    "modifiedTime": "2023-10-05T07:58:33.516Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Dokumentmaler",
+      "ingress": "Her finner du ulike eksempler på utforming av ulike dokumenter innenfor budsjettering, regnskap og lønn. ",
+      "lastUpdated": null,
+      "articleType": null,
+      "contentOwner": [
+        {
+          "displayName": "Starte og drive",
+          "data": {
+            "email": "https://www.altinn.no/hjelp/?form=1"
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "2e3b3bf4-9f9a-4d3e-aab2-42b4473591af",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/regnskap-og-revisjon/ma-jeg-ha-regnskapsforer",
+    "language": "nb_NO",
+    "createdTime": "2023-10-06T07:58:00.05Z",
+    "modifiedTime": "2023-11-16T08:12:37.221Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Må jeg ha regnskapsfører?",
+      "ingress": "Det er ingen lov som sier at du må bruke en regnskapsfører til å føre regnskapet ditt. Det er du som er ansvarlig for at regnskapet til foretaket ditt blir ført korrekt. Har du kunnskap, tid og interesse for det, er det absolutt mulig å gjøre det selv.",
+      "lastUpdated": "2023-04-25",
+      "articleType": null,
+      "contentOwner": [
+        {
+          "displayName": "Finanstilsynet",
+          "data": {
+            "email": null
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "b98fddf3-f010-48a5-a08d-d261369c4201",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/regnskap-og-revisjon/ma-jeg-ha-revisor",
+    "language": "nb_NO",
+    "createdTime": "2023-09-15T08:11:42.7Z",
+    "modifiedTime": "2023-11-16T08:08:18.455Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Må jeg ha revisor? ",
+      "ingress": "Alle som er pliktig til å levere revidert årsregnskap må ha en revisor. Om du har revisjonsplikt avhenger blant annet av foretakets organisasjonsform og størrelsen på virksomheten. ",
+      "lastUpdated": "2023-05-01",
+      "articleType": null,
+      "contentOwner": [
+        {
+          "displayName": "Brønnøysundsregistrene",
+          "data": {
+            "email": "kontakt@brreg.no"
+          }
+        },
+        {
+          "displayName": "Finanstilsynet",
+          "data": {
+            "email": null
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "35e80137-0868-46d2-86d1-71b813e137b0",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/drive-bedrift/budsjett-i-driftsfasen",
+    "language": "nb_NO",
+    "createdTime": "2023-09-26T12:30:44.018Z",
+    "modifiedTime": "2023-09-26T12:37:33.562Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Budsjett i driftsfasen",
+      "ingress": "Når du er over den første oppstartsfasen er det en fordel å sette videre mål for virksomheten og planlegge hva som kreves for å nå disse målene. I denne sammenhengen er et budsjett et godt verktøy. ",
+      "lastUpdated": null,
+      "articleType": null,
+      "contentOwner": [
+        {
+          "displayName": "Brønnøysundsregistrene",
+          "data": {
+            "email": "kontakt@brreg.no"
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "18cb4160-d940-40c1-8b1c-9ce3770bc68e",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/drive-bedrift/forbud-mot-diskriminering-av-kunder",
+    "language": "nb_NO",
+    "createdTime": "2023-09-26T11:59:16.396Z",
+    "modifiedTime": "2023-11-15T10:40:52.518Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Forbud mot diskriminering av kunder",
+      "ingress": "Alle som selger varer eller tjenester i Norge må bidra til å fremme likestilling og sørge for å unngå å diskriminere. Lokaler og løsninger skal som hovedregel lages slik at de kan brukes av alle mennesker i så stor grad som mulig.",
+      "lastUpdated": "2022-02-02",
+      "articleType": null,
+      "contentOwner": [
+        {
+          "displayName": "Likestillings- og diskrimineringsombudet",
+          "data": {
+            "email": null
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "c30088e6-1d10-4dd2-8526-cbb1c361d885",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/drive-bedrift/hvordan-melde-flytting-ny-bankkonto-og-andre-endringer",
+    "language": "nb_NO",
+    "createdTime": "2023-09-26T12:05:41.034Z",
+    "modifiedTime": "2023-11-15T10:41:46.997Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Hvordan melde flytting, ny bankkonto og andre endringer?",
+      "ingress": "Dersom foretaket ditt flytter, får nye styremedlemmer, ny bankkonto eller lignende, må du sørge for at disse endringene blir registrert. Hvor du skal melde endringene varierer avhengig av hva som endres. ",
+      "lastUpdated": "2022-11-02",
+      "articleType": null,
+      "contentOwner": [
+        {
+          "displayName": "Brønnøysundsregistrene",
+          "data": {
+            "email": "kontakt@brreg.no"
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "91269edc-0699-4c77-b1eb-be5f28770504",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/drive-bedrift/krav-til-informasjon-om-foretaket-pa-nettsider-og-forretningsdokumenter",
+    "language": "nb_NO",
+    "createdTime": "2023-09-26T12:21:54.831Z",
+    "modifiedTime": "2023-11-15T08:36:19.409Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Krav til informasjon om foretaket på nettsider og forretningsdokumenter",
+      "ingress": "Nettsider, brev og andre forretningsdokumenter (fakturaer, ordresedler, kreditnotaer og lignende) skal alltid inneholde foretakets navn og organisasjonsnummer. Konvolutter og reklamemateriell regnes ikke som forretningsdokument.",
+      "lastUpdated": "2022-11-02",
+      "articleType": null,
+      "contentOwner": [
+        {
+          "displayName": "Brønnøysundsregistrene",
+          "data": {
+            "email": "kontakt@brreg.no"
+          }
+        },
+        {
+          "displayName": "Skatteetaten",
+          "data": {
+            "email": "kontakt@skatt.no"
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "e402970e-d58e-42f4-9b7a-241eca827f9a",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/drive-bedrift/personvern",
+    "language": "nb_NO",
+    "createdTime": "2023-09-26T11:55:03.13Z",
+    "modifiedTime": "2023-11-15T10:37:09.372Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Personvern",
+      "ingress": "Alle virksomheter som samler inn og bruker personopplysninger må forholde seg til personvernregelverket (GDPR).",
+      "lastUpdated": "2022-03-22",
+      "articleType": null,
+      "contentOwner": [
+        {
+          "displayName": "Brønnøysundsregistrene",
+          "data": {
+            "email": "kontakt@brreg.no"
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "0fa5038d-1b42-4847-b3ad-1d4aa321743a",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/drive-bedrift/praktisk-styrearbeid",
+    "language": "nb_NO",
+    "createdTime": "2023-09-26T12:40:27.496Z",
+    "modifiedTime": "2023-12-15T12:08:09.24Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Praktisk styrearbeid",
+      "ingress": "Styret og styrearbeid er mer enn en pålagt oppgave, og et godt fungerende styre kan være en ressurs for virksomheten. Det er derfor viktig å være bevist på hvordan styret settes sammen og hvilken kompetanse styremedlemmene innehar. Denne teksten er skrevet for styrearbeid i aksjeselskap, men kan også benyttes som utgangspunkt for styrearbeid i andre organisasjonsformer.",
+      "lastUpdated": "2023-02-13",
+      "articleType": "article",
+      "contentOwner": [
+        {
+          "displayName": "Brønnøysundsregistrene",
+          "data": {
+            "email": "kontakt@brreg.no"
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "1329a81c-316d-47b7-bd30-cd86d19f5441",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/drive-bedrift/reelle-rettighetshavere",
+    "language": "nb_NO",
+    "createdTime": "2023-09-26T12:38:35.599Z",
+    "modifiedTime": "2023-11-14T12:34:12.467Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Reelle rettighetshavere",
+      "ingress": "Lov om reelle rettighetshavere pålegger de fleste virksomheter å ha oversikt over og kunne dokumentere hvem som er reelle rettighetshavere i virksomheten. Register over reelle rettighetshavere skal ha oversikt over hvem som er reelle rettighetshavere og virksomheten må da registrere disse i registeret. Etablering av registeret er utsatt på ubestemt tid. Formålet er å skape økt åpenhet om hvem som kontrollerer virksomheten.",
+      "lastUpdated": "2023-02-13",
+      "articleType": null,
+      "contentOwner": [
+        {
+          "displayName": "Brønnøysundsregistrene",
+          "data": {
+            "email": "kontakt@brreg.no"
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "5fcaf51c-9f78-4d5d-b5b8-a056cf4b923a",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/drive-bedrift/skattemessig-omdanning",
+    "language": "nb_NO",
+    "createdTime": "2023-09-15T07:58:09.664Z",
+    "modifiedTime": "2023-11-23T08:54:54.241Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Skattemessig omdanning",
+      "ingress": "Et enkeltpersonforetak, selskap med deltakerfastsetting, samvirkeforetak eller NUF (norskregistrert utenlandsk foretak), som driver virksomhet i skattelovens forstand, kan etter nærmere regler omdannes skattefritt til aksjeselskap. ",
+      "lastUpdated": "2023-03-27",
+      "articleType": "article",
+      "contentOwner": [
+        {
+          "displayName": "Skatteetaten",
+          "data": {
+            "email": "kontakt@skatt.no"
+          }
+        }
+      ],
+      "tags": [],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  },
+  {
+    "_id": "24c1ab20-b8ca-40e6-b181-c953f5b05072",
+    "_score": 1.9051113,
+    "_path": "/starte-og-drive/innholdskategorier/drive-bedrift/spille-musikk-for-gjestene",
+    "language": "nb_NO",
+    "createdTime": "2023-11-08T12:06:31.327Z",
+    "modifiedTime": "2024-11-13T14:25:10.118Z",
+    "type": "no.brreg.rettfrastart:article",
+    "data": {
+      "title": "Spille musikk for gjestene",
+      "ingress": "Skal du spille musikk for gjestene må du ha tillatelse til dette.",
+      "lastUpdated": "2024-11-13",
+      "articleType": "article",
+      "contentOwner": [
+        {
+          "displayName": "Starte og drive",
+          "data": {
+            "email": "https://www.altinn.no/hjelp/?form=1"
+          }
+        }
+      ],
+      "tags": [
+        {
+          "_id": "a8fd3ab0-b778-4fe3-8846-0ae766cd0037",
+          "parent": {
+            "_id": "5d3d9750-c8e1-424b-ad8e-1fcaf31b23ed"
+          },
+          "displayName": "Musikk",
+          "data": {
+            "description": "Spille musikk for gjestene"
+          }
+        }
+      ],
+      "nace": ["ALL"],
+      "unitType": ["ALL"],
+      "noOfEmployees": ["ALL"],
+      "revenue": ["ALL"]
+    }
+  }
+]

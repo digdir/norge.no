@@ -1,8 +1,6 @@
 import { Divider } from "@digdir/designsystemet-react";
 import { Header } from "../../components/header/index.tsx";
 import { Footer } from "../../components/footer/index.tsx";
-import { queryClient } from "@packages/data-access/react-query/query-client";
-import { QueryClientProvider } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 
 import "@digdir/designsystemet-css";
@@ -22,14 +20,12 @@ export function RootLayout({ children }: { children: ReactNode }) {
           crossOrigin="anonymous"
         />
       </head>
-      <QueryClientProvider client={queryClient.get()}>
         <body className={styles.container}>
           <Header />
           <Divider />
           <main className={styles.mainContent}>{children}</main>
           <Footer />
         </body>
-      </QueryClientProvider>
     </html>
   );
 }
