@@ -4,7 +4,7 @@ services:
       context: ./apps/cms
       dockerfile: Dockerfile
     ports:
-      - '1337:1337'
+      - "1337:1337"
     environment:
       DATABASE_CLIENT: postgres
       DATABASE_HOST: cms-db
@@ -24,18 +24,19 @@ services:
       args:
         STRAPI_API_URL: http://cms:1337
     ports:
-      - '8085:8085'
+      - "8085:8787"
     env_file:
-      - ./apps/frontend/.env
+      - ./apps/frontend/.dev.vars
     environment:
       STRAPI_API_URL: http://cms:1337
+      ASSISTANT_API_URL: http://localhost:8000/api
     depends_on:
       - cms
     develop:
       watch:
         - action: rebuild
-          path: ./apps/frontend/.env
-          target: /app/apps/frontend/.env
+          path: ./apps/frontend/.dev.vars
+          target: /app/apps/frontend/.dev.vars
 
   cms-db:
     image: postgres
@@ -47,7 +48,27 @@ services:
     volumes:
       - cms-data:/var/lib/postgresql/data
     ports:
-      - '5432:5432'
+      - "5432:5432"
+
+  assistant:
+    environment:
+      FRONTEND_HOST: http://localhost:8085
+    build:
+      context: ./apps/assistant
+      secrets:
+        # Makes the env file available to the build process
+        - assistant_env
+    ports:
+      - "8000:8000"
+    # env_file is still fine for non-sensitive runtime config
+    # or for the final running container's key.
+    env_file:
+      - ./apps/assistant/.env
+
+secrets:
+  assistant_env:
+    # Points to the file containing your env vars
+    file: ./apps/assistant/.env
 
 volumes:
   cms-data:

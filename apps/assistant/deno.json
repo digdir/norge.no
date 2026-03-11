@@ -1,0 +1,10 @@
+{
+  "name": "@apps/assistant",
+  "type": "module",
+  "version": "0.0.1",
+  "exports": "./src/main.py",
+  "tasks": {
+    "dev": "poetry run uvicorn src.main:app --reload --port 8001",
+    "postinstall": "poetry install"
+  }
+}

@@ -1,5 +1,5 @@
 ---
-import { SearchBar, QuickLinks, ServiceCategoryGrid, PopularServices, MainHero} from '@packages/ui/components';
+import { SearchBar, QuickLinks, ServiceCategoryGrid, PopularServices, MainHero, ChatPopup} from '@packages/ui/components';
 import { PageLayout } from '@packages/ui/layouts';
 import RootLayout from '../layouts/RootLayout.astro';
 import '@digdir/designsystemet-css';
@@ -16,5 +16,6 @@ import { LivshendelseListe } from '@components/livshendelse-liste';
       <ServiceCategoryGrid client:visible />
       <PopularServices client:visible />
       <LivshendelseListe client:load />
+      <ChatPopup client:load />
   </PageLayout>
 </RootLayout>

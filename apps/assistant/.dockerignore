@@ -1,0 +1,43 @@
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Dependencies
+node_modules
+
+# Build artifacts from local development
+# The Docker build process will create these inside the container
+build
+dist
+.next
+*.egg-info/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Environment variables (secrets should not be in the image)
+.env
+.env.local
+.env.*.local
+*.env
+
+# IDE and OS specific
+.vscode
+.idea
+.DS_Store
+README.md
+
+# Virtual Environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/

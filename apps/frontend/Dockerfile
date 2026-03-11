@@ -1,8 +1,10 @@
 # Use the official Deno image
-FROM denoland/deno:alpine-2.2.11
+FROM denoland/deno:2.5.4
 
 ARG STRAPI_API_URL=http://localhost:1337
 ENV STRAPI_API_URL=${STRAPI_API_URL}
+
+RUN apt-get update && apt-get install -y nodejs npm && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory
 WORKDIR /app
@@ -14,6 +16,8 @@ COPY deno.json deno.lock ./
 COPY apps/frontend ./apps/frontend
 COPY packages/ui ./packages/ui
 COPY packages/types ./packages/types
+COPY packages/data-access ./packages/data-access
+COPY packages/analytics ./packages/analytics
 
 # Install dependencies
 RUN deno task frontend:build
@@ -22,4 +26,4 @@ RUN deno task frontend:build
 EXPOSE 4321
 
 # Start the Astro application
-CMD ["deno", "task", "frontend:preview", "--host"]
+CMD ["deno", "task", "frontend:preview"]

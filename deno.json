@@ -3,7 +3,7 @@
   "tasks": {
     "frontend:dev": "cd apps/frontend && sh -c 'wrangler types && astro dev'",
     "frontend:build": "cd apps/frontend && sh -c 'wrangler types && astro build'",
-    "frontend:preview": "cd apps/frontend && sh -c 'wrangler types && wrangler dev'",
+    "frontend:preview": "cd apps/frontend && sh -c 'wrangler types && wrangler dev --ip 0.0.0.0'",
     "cms:install": "cd apps/cms && pnpm approve-builds && pnpm install",
     "cms:dev": "cd apps/cms && sh -c 'pnpm run develop'",
     "cms:build": "cd apps/cms && sh -c 'pnpm approve-builds && pnpm install && pnpm run build'",
@@ -11,7 +11,10 @@
     "cms:deploy": "cd apps/cms && sh -c 'pnpm run deploy'",
     "cms:start": "cd apps/cms && sh -c 'pnpm run start'",
     "cms:upgrade": "cd apps/cms && sh -c 'npx @strapi/upgrade latest'",
-    "cms:upgrade:dry": "cd apps/cms && sh -c 'npx @strapi/upgrade latest --dry'"
+    "cms:upgrade:dry": "cd apps/cms && sh -c 'npx @strapi/upgrade latest --dry'",
+    "assistant:install": "cd apps/assistant && sh -c 'poetry install'",
+    "assistant:dev": "cd apps/assistant && sh -c 'poetry run python -m src.main'",
+    "assistant:build": "cd apps/assistant && sh -c 'poetry build'"
   },
   "imports": {
     "@astrojs/cloudflare": "npm:@astrojs/cloudflare@^12.5.3",
@@ -25,6 +28,7 @@
     "@tanstack/react-query": "npm:@tanstack/react-query@^5.76.1",
     "@types/react": "npm:@types/react@^19.1.4",
     "@types/react-dom": "npm:@types/react-dom@^19.1.5",
+    "classnames": "npm:classnames@^2.5.1",
     "nanostores": "npm:nanostores@^1.0.1",
     "posthog-js": "npm:posthog-js@1.261.0",
     "react": "npm:react@^19.1.0",

@@ -61,3 +61,5 @@ export const Livshendelse = ({ slug }: { slug: string }) => {
     </article>
   );
 };
+
+

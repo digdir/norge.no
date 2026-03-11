@@ -1,0 +1,61 @@
+{
+  "_id": "a757ee8e-8b5d-4172-b582-9debd585bf7e",
+  "_path": "/starte-og-drive/profilveiledere/renholdsprofil/renhold/godkjenning-som-renholdsvirksomhet-bil",
+  "language": "nb_NO",
+  "createdTime": "2024-05-15T12:02:08.465Z",
+  "modifiedTime": "2024-05-15T12:05:18.829Z",
+  "data": {
+    "title": "Godkjenning som renholdsvirksomhet",
+    "ingress": "Alle virksomheter som tilbyr tjenester innenfor manuell bilpleie, hjulskift og hjullagring, skal søke om å bli godkjent av Arbeidstilsynet.",
+    "lastUpdated": null,
+    "articleType": "article",
+    "contentOwner": [
+      {
+        "displayName": "Arbeidstilsynet",
+        "data": {
+          "email": "email@email.com"
+        }
+      }
+    ],
+    "tags": [
+      {
+        "_id": "15cd1ead-f1b8-44fa-a88b-5019850e5348",
+        "parent": {
+          "_id": "a396b7b2-fa17-44fa-9738-3ed106272bb9"
+        },
+        "displayName": "Godkjenning-bil",
+        "data": {
+          "description": "Godkjenning som bilpleie"
+        }
+      }
+    ],
+    "nace": ["81.2"],
+    "unitType": ["ALL"],
+    "noOfEmployees": ["ALL"]
+  },
+  "atoms": [
+    {
+      "_id": "926f1429-b1fe-474d-b26c-a2989a6e9c6b",
+      "type": "no.brreg.rettfrastart:atom",
+      "data": {
+        "title": null,
+        "text": {
+          "processedHtml": "<p>Dette gjelder også for virksomheter som leier ut arbeidstakere som arbeider med disse tjenestene.</p>\n\n<p>Det er ulovlig å selge slike tjenester uten en godkjenning.</p>\n\n<p>De som har godkjenning fra Statens vegvesen trenger ikke søke.</p>\n\n<p>Godkjenningsordning er i stor grad basert på den eksisterende godkjenningsordningen for renholdsvirksomheter, og innebærer at virksomhetene må dokumentere overfor Arbeidstilsynet at enkelte plikter etter blant annet arbeidsmiljøregelverket er oppfylt.</p>\n\n<p>Arbeidstilsynet har etablert et offentlig register over virksomhetene der det kommer frem om virksomheten er godkjent, har søknad til behandling eller ikke er godkjent.</p>\n\n<p>Det kan også stilles krav knyttet til utslipp fra virksomheten, ta kontakt med kommunen for nærmere informasjon.</p>\n\n<p><a href=\"https://www.arbeidstilsynet.no/tema/sok-godkjenning-bilpleie-hjul/\" rel=\"noopener\" target=\"_blank\">Arbeidstilsynet om godkjenning av bilpleie, hjulskift og hjullagring</a></p>\n\n<p><a href=\"https://info.altinn.no/skjemaoversikt/miljodirektoratet/utslippstillatelse/\" rel=\"noopener\" target=\"_blank\">Utslippstillatelse</a></p>\n\n<p><a href=\"https://info.altinn.no/skjemaoversikt/kommunene/tillatelse-til-utslipp-av-oljeholdig-avlopsvann/\" rel=\"noopener\" target=\"_blank\">Tillatelse til utslipp av oljeholdig avløpsvann</a></p>\n\n<p><a href=\"https://lovdata.no/dokument/LTI/forskrift/2022-02-11-206\" rel=\"noopener\" target=\"_blank\">Forskrift om offentlig godkjenning av virksomheter som tilbyr bilpleie, hjulskift og hjullagring, og om kjøp av slike tjenester</a></p>\n",
+          "macros": [],
+          "links": []
+        },
+        "tags": [],
+        "revenue": ["ALL"],
+        "noOfEmployees": ["ALL"],
+        "nace": ["ALL"],
+        "unitType": ["ALL"],
+        "contentOwner": []
+      }
+    }
+  ],
+  "languagePaths": {
+    "nb": "starte-og-drive/profilveiledere/renholdsprofil/renhold/godkjenning-som-renholdsvirksomhet-bil",
+    "en": "",
+    "nn": ""
+  }
+}
