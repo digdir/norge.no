@@ -1,4 +1,6 @@
 name: Assistant CI
+permissions:
+  contents: read
 
 on:
   push:
