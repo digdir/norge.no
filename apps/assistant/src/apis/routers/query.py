@@ -1,31 +1,34 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 import logging
 
 from ...schemas.apis.query import ChatQueryRequest
 from ...dependencies.agents import get_unstructured_agent_executor, get_structured_agent_executor
 from ...schemas.apis.user import get_session_id
+from ...dependencies.rate_limiter import limiter
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/chat-query")
 
 @router.post("/")
+@limiter.limit("5/minute")
 async def chat_query(
-    request: ChatQueryRequest,
+    request: Request,
+    payload: ChatQueryRequest,
     session_id: str = Depends(get_session_id),
     unstructured_agent_executor = Depends(get_unstructured_agent_executor),
     structured_agent_executor = Depends(get_structured_agent_executor)
 ):
     try:
-        logger.info(f"Received {request.structure} query: {request.question}")
+        logger.info(f"Received {payload.structure} query: {payload.question}")
         
         config = {"configurable": {"thread_id": session_id}}
         
-        executor = structured_agent_executor if request.structure == "structured" else unstructured_agent_executor
+        executor = structured_agent_executor if payload.structure == "structured" else unstructured_agent_executor
         input_state = {
-            "question": request.question,
-            "structure": request.structure,
-            "messages": [("user", request.question)]
+            "question": payload.question,
+            "structure": payload.structure,
+            "messages": [("user", payload.question)]
         }
         response = await executor.ainvoke(input_state, config)
         
@@ -46,5 +49,5 @@ async def chat_query(
             return {"response": "I apologize, but I encountered an issue processing your request. Please try again.", "session_id": session_id, "citations": []}
         
     except Exception as e:
-        logger.error(f"Error in {request.structure} query: {str(e)}")
+        logger.error(f"Error in {payload.structure} query: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))

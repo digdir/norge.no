@@ -44,7 +44,18 @@ async function postQuery({
   });
 
   if (!response.ok) {
-    throw new Error(`API request failed with status ${response.status}`);
+    if (response.status === 429) {
+      throw new Error("Du har nådd chat-grensen. Vennligst vent 1 minutt og prøv igjen.");
+    }
+    if (response.status === 422) {
+      throw new Error("Meldingen din er for lang. Vennligst forkort den til under 2000 tegn og prøv igjen.");
+    }
+    try {
+      const errorData = await response.json();
+      throw new Error(errorData.detail || "Beklager, jeg støtte på en feil. Vennligst prøv igjen.");
+    } catch {
+      throw new Error("Beklager, jeg støtte på en feil. Vennligst prøv igjen.");
+    }
   }
   const data = await response.json();
   return data;

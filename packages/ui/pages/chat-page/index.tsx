@@ -62,7 +62,7 @@ export function ChatPageContent({assistantApiUrl}: IChatPageProps) {
         onError: (error: Error) => {
           console.error('Failed to fetch response:', error);
           const errorMessage: ChatMessageProps = createChatMessage(
-            'Sorry, I encountered an error. Please try again.',
+            error.message || 'Beklager, jeg støtte på en feil. Vennligst prøv igjen.',
             'ai',
           );
           setMessages((prev) => [...prev, errorMessage]);
