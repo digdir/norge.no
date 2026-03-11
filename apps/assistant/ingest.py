@@ -86,30 +86,22 @@ def process_article_summary(summary: dict) -> Document:
     return Document(page_content=page_content, metadata=sanitize_metadata(metadata))
 
 def ingest_all_data():
-    load_dotenv()
-    if os.getenv("USE_OLLAMA") != "true":
-        api_key = None
-        # --- Start of corrected logic ---
-    
-        # 1. Try to read the key from the Docker secret file first.
-        # This path is only available during the Docker build.
-        try:
-            with open('/run/secrets/google_api_key', 'r') as f:
-                # This handles the .env format like GOOGLE_API_KEY="yourkey"
-                line = f.readline().strip()
-                if '=' in line:
-                    api_key = line.split('=', 1)[1].strip().strip('"\'')
-                else: # Handles a file with just the raw key
-                    api_key = line
-            logger.info("Loaded API key from Docker secret.")
-        except FileNotFoundError:
-            # 2. If the secret file is not found, fall back to .env for local execution.
-            logger.info("Docker secret not found. Falling back to .env file.")
-            api_key = os.getenv("GOOGLE_API_KEY")
-    
-        # 3. Fail loudly if no key is found.
-        if not api_key:
+    # Load from Docker secret if it exists (build time)
+    if os.path.exists("/run/secrets/assistant_env"):
+        load_dotenv("/run/secrets/assistant_env")
+    else:
+        # Fall back to local .env file
+        load_dotenv()
+        
+    use_ollama = os.getenv("USE_OLLAMA", "false").lower() == "true"
+    use_azure = os.getenv("USE_AZURE_OPENAI", "false").lower() == "true"
+
+    if not use_ollama and not use_azure:
+        if not os.getenv("GOOGLE_API_KEY"):
             raise ValueError("GOOGLE_API_KEY not found. Set it in .env for local use or via Docker secrets for builds.")
+    if use_azure:
+        if not os.getenv("AZURE_OPENAI_API_KEY"):
+            raise ValueError("AZURE_OPENAI_API_KEY not found for Azure setup.")
     
     json_directory = "data/"
     langchain_documents = []

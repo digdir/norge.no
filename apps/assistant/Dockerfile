@@ -15,7 +15,7 @@ COPY src ./src
 COPY data ./data
 COPY ingest.py .
 
-RUN --mount=type=secret,id=google_api_key poetry run python ingest.py
+RUN --mount=type=secret,id=assistant_env poetry run python ingest.py
 
 FROM python:3.13-slim AS final
 
