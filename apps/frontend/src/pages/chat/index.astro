@@ -5,10 +5,24 @@ import { ChatPage } from '@packages/ui/pages/chat-page';
 
 const { ASSISTANT_API_URL }  = Astro.locals.runtime.env || {};
 
-
 ---
 <RootLayout>
   <PageLayout>
     <ChatPage assistantApiUrl={ASSISTANT_API_URL} client:load/>
   </PageLayout>
 </RootLayout>
+
+<style>
+  :global(body) {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+  
+  :global(main) {
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+</style>
