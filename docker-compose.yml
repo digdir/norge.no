@@ -51,19 +51,24 @@ services:
       - "5432:5432"
 
   assistant:
-    environment:
-      FRONTEND_HOST: http://localhost:8085
+    restart: unless-stopped
     build:
       context: ./apps/assistant
       secrets:
-        # Makes the env file available to the build process
         - assistant_env
     ports:
       - "8000:8000"
-    # env_file is still fine for non-sensitive runtime config
-    # or for the final running container's key.
     env_file:
       - ./apps/assistant/.env
+
+  cloudflared:
+    image: docker.io/cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      - assistant
 
 secrets:
   assistant_env:
