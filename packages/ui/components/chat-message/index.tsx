@@ -20,6 +20,7 @@ export interface ComponentNode {
 export interface ChatMessageProps {
   id?: string;
   message: Message;
+  introduction?: string;
   sender: Sender;
   avatar?: React.ReactNode;
   pending?: boolean;
@@ -30,10 +31,12 @@ export const createChatMessage = (
   message: Message,
   sender: Sender,
   citations?: Citation[],
+  introduction?: string,
 ): ChatMessageProps => {
   return {
     id: Date.now().toString(),
     message: message,
+    introduction: introduction,
     sender: sender,
     avatar: sender === 'ai' ? <PersonIcon /> : <PaperplaneIcon />,
     citations: citations,
@@ -82,6 +85,7 @@ const ChatAvatar = ({sender}: Partial<ChatMessageProps>) => {
 export const ChatMessage = ({
   id,
   message,
+  introduction,
   sender,
   pending = false,
   citations,
@@ -96,16 +100,21 @@ export const ChatMessage = ({
       )}
     >
       <ChatAvatar sender={sender} />
-      <div
-        className={
-          sender === 'ai' ? styles.aiMessageBubble : styles.userMessageBubble
-        }
-      >
-        {typeof message === 'string' ? (
-          <Paragraph>{message}</Paragraph>
-        ) : (
-          <DynamicRenderer node={message} />
+      <div className={styles.messageContentWrapper}>
+        {introduction && (
+          <Paragraph className={styles.introduction}>{introduction}</Paragraph>
         )}
+        <div
+          className={
+            sender === 'ai' ? styles.aiMessageBubble : styles.userMessageBubble
+          }
+        >
+          {typeof message === 'string' ? (
+            <Paragraph>{message}</Paragraph>
+          ) : (
+            <DynamicRenderer node={message} />
+          )}
+        </div>
 
         {citations && citations.length > 0 && (
           <div className={styles.citationsContainer}>

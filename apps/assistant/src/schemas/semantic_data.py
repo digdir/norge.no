@@ -25,6 +25,7 @@ class SemanticResponse(BaseModel):
     Represents the semantic data returned by the agent. 
     The frontend client will map this data to their own UI components.
     """
+    introduction: Optional[str] = Field(None, description="The short, descriptive introductory sentence about the retrieved excerpt.")
     summary: str = Field(description="The exact extracted portion of the text that contains the answer. Do not summarize, use verbatim extracted text.")
     steps: Optional[List[ServiceStep]] = Field(default_factory=list, description="If the user asks for a procedure or 'how to' guide, break it down into sequential steps here.")
     references: Optional[List[Reference]] = Field(default_factory=list, description="Sources or articles used to answer the question, usually from data.norge.no or similar.")
