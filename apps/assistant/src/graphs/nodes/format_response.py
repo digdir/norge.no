@@ -1,5 +1,5 @@
 from operator import itemgetter
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.language_models.chat_models import BaseChatModel
 from dotenv import load_dotenv
@@ -7,7 +7,7 @@ from langchain_core.runnables import Runnable
 from ...states.state import AgentState
 from ...schemas.semantic_data import SemanticResponse
 import logging
-from langchain.schema import AIMessage, HumanMessage
+from langchain_core.messages import AIMessage, HumanMessage
 
 load_dotenv()
 logger = logging.getLogger(__name__)
