@@ -8,6 +8,15 @@ from ...dependencies.rate_limiter import limiter
 
 logger = logging.getLogger(__name__)
 
+def _sanitize_for_logging(value):
+    """
+    Remove characters that could break log formatting, such as newlines.
+    """
+    if value is None:
+        return ""
+    text = str(value)
+    return text.replace("\r", "").replace("\n", "")
+
 router = APIRouter(prefix="/chat-query")
 
 @router.post("/")
@@ -49,5 +58,6 @@ async def chat_query(
             return {"response": "I apologize, but I encountered an issue processing your request. Please try again.", "session_id": session_id, "citations": []}
         
     except Exception as e:
-        logger.error(f"Error in {payload.structure} query: {str(e)}")
+        safe_structure = _sanitize_for_logging(payload.structure)
+        logger.error(f"Error in {safe_structure} query: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
