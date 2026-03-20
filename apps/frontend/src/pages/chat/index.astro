@@ -2,8 +2,9 @@
 import { PageLayout } from '@packages/ui/layouts';
 import RootLayout from '../../layouts/RootLayout.astro';
 import { ChatPage } from '@packages/ui/pages/chat-page';
+import { env } from 'cloudflare:workers';
 
-const { ASSISTANT_API_URL }  = Astro.locals.runtime.env || {};
+const { ASSISTANT_API_URL }  = env || {};
 
 ---
 <RootLayout>

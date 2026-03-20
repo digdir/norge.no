@@ -1,19 +1,19 @@
 import {safeFetchStrapiData} from './fetch-api.ts';
+import { env } from 'cloudflare:workers';
+
 
 import type {APIRoute} from 'astro';
 
-export const GET: APIRoute = async ({params, request, locals}) => {
-  const runtime = locals.runtime;
-
-  if (!runtime?.env?.STRAPI_API_URL || !runtime?.env?.STRAPI_API_KEY) {
+export const GET: APIRoute = async ({params, request}) => {
+  if (!env.STRAPI_API_URL || !env.STRAPI_API_KEY) {
     return new Response(
       JSON.stringify({error: 'Server configuration error.'}),
       {status: 500}
     );
   }
 
-  const strapiApiUrl = runtime.env.STRAPI_API_URL as string;
-  const strapiApiKey = runtime.env.STRAPI_API_KEY as string;
+  const strapiApiUrl = env.STRAPI_API_URL;
+  const strapiApiKey = env.STRAPI_API_KEY;
 
   if (!params.cmsPath) {
     return new Response(JSON.stringify({error: 'CMS path is missing.'}), {

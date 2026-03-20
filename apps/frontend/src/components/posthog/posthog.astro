@@ -1,5 +1,7 @@
 ---
-const { POSTHOG_API_KEY, POSTHOG_API_HOST, POSTHOG_DEFAULTS }  = Astro.locals.runtime.env || {};
+import { env } from 'cloudflare:workers';
+
+const { POSTHOG_API_KEY, POSTHOG_API_HOST, POSTHOG_DEFAULTS }  = env || {};
 const posthogConfig = { POSTHOG_API_KEY, POSTHOG_API_HOST, POSTHOG_DEFAULTS };
 ---
 

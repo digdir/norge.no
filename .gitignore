@@ -288,3 +288,8 @@ dist
 # Vector DB
 apps/assistant/db/
 
+# Copilot / AI Assistant custom instructions
+.github/instructions/
+.github/copilot-instructions.md
+
+
