@@ -1,106 +1,110 @@
-import type { Livshendelse } from "@packages/types/cms";
+/**
+ * This Strapi api configuration will be updated with the new CMS (Umbraco)
+ */
 
-export interface StrapiFetchProps {
-  strapiApiUrl: string;
-  strapiApiKey: string;
-  endpoint: string;
-  rawQuery?: string;
-  query?: Record<string, string>;
-  wrappedByKey?: string;
-  wrappedByList?: boolean;
-  populate?: string | string[];
-}
+// import type { Livshendelse } from "@packages/types/cms";
 
-export interface StrapiResult<T> {
-  data: T | null;
-  error?: string;
-  status: number;
-}
+// export interface StrapiFetchProps {
+//   strapiApiUrl: string;
+//   strapiApiKey: string;
+//   endpoint: string;
+//   rawQuery?: string;
+//   query?: Record<string, string>;
+//   wrappedByKey?: string;
+//   wrappedByList?: boolean;
+//   populate?: string | string[];
+// }
 
-export interface LivshendelserResult {
-  data: Livshendelse[] | null;
-  error?: string;
-}
+// export interface StrapiResult<T> {
+//   data: T | null;
+//   error?: string;
+//   status: number;
+// }
 
-export async function fetchStrapiDataFromServer<T>({
-  strapiApiUrl,
-  strapiApiKey,
-  endpoint,
-  rawQuery,
-  wrappedByKey,
-  wrappedByList,
-  populate,
-}: StrapiFetchProps): Promise<T> {
-  if (endpoint.startsWith('/')) {
-    endpoint = endpoint.slice(1);
-  }
+// export interface LivshendelserResult {
+//   data: Livshendelse[] | null;
+//   error?: string;
+// }
 
-  let fullStrapiUrl = strapiApiUrl;
-  if (!/^https?:\/\//i.test(fullStrapiUrl)) {
-    fullStrapiUrl = `https://${fullStrapiUrl}`;
-  }
-  const url = new URL(`${fullStrapiUrl}/api/${endpoint}`);
-  const searchParams = new URLSearchParams(rawQuery);
+// export async function fetchStrapiDataFromServer<T>({
+//   strapiApiUrl,
+//   strapiApiKey,
+//   endpoint,
+//   rawQuery,
+//   wrappedByKey,
+//   wrappedByList,
+//   populate,
+// }: StrapiFetchProps): Promise<T> {
+//   if (endpoint.startsWith('/')) {
+//     endpoint = endpoint.slice(1);
+//   }
 
-  if (populate) {
-    if (Array.isArray(populate)) {
-      populate.forEach((p, index) => searchParams.append(`populate[${index}]`, p));
-    } else {
-      searchParams.append('populate', populate);
-    }
-  }
+//   let fullStrapiUrl = strapiApiUrl;
+//   if (!/^https?:\/\//i.test(fullStrapiUrl)) {
+//     fullStrapiUrl = `https://${fullStrapiUrl}`;
+//   }
+//   const url = new URL(`${fullStrapiUrl}/api/${endpoint}`);
+//   const searchParams = new URLSearchParams(rawQuery);
 
-  url.search = searchParams.toString();
+//   if (populate) {
+//     if (Array.isArray(populate)) {
+//       populate.forEach((p, index) => searchParams.append(`populate[${index}]`, p));
+//     } else {
+//       searchParams.append('populate', populate);
+//     }
+//   }
 
-  const headers = {
-    Authorization: `Bearer ${strapiApiKey}`,
-    'Content-Type': 'application/json',
-  };
+//   url.search = searchParams.toString();
 
-  const res = await fetch(url.toString(), {headers});
+//   const headers = {
+//     Authorization: `Bearer ${strapiApiKey}`,
+//     'Content-Type': 'application/json',
+//   };
 
-  if (!res.ok) {
-    const errorBody = await res.text();
-    console.error(
-      `Strapi API Error (${res.status}) from ${url.toString()}: ${errorBody}`
-    );
-    throw new Error(
-      `Failed to fetch from Strapi (${url.toString()}): ${res.status} ${
-        res.statusText
-      }`
-    );
-  }
+//   const res = await fetch(url.toString(), {headers});
 
-  let data: any = await res.json();
+//   if (!res.ok) {
+//     const errorBody = await res.text();
+//     console.error(
+//       `Strapi API Error (${res.status}) from ${url.toString()}: ${errorBody}`
+//     );
+//     throw new Error(
+//       `Failed to fetch from Strapi (${url.toString()}): ${res.status} ${
+//         res.statusText
+//       }`
+//     );
+//   }
 
-  if (wrappedByKey) {
-    data = data[wrappedByKey];
-  }
+//   let data: any = await res.json();
 
-  if (wrappedByList && Array.isArray(data)) {
-    data = data[0];
-  }
+//   if (wrappedByKey) {
+//     data = data[wrappedByKey];
+//   }
 
-  return data as T;
-}
+//   if (wrappedByList && Array.isArray(data)) {
+//     data = data[0];
+//   }
 
-export async function safeFetchStrapiData<T>(props: StrapiFetchProps, timeoutMs = 5000): Promise<StrapiResult<T>> {
-  const controller = new AbortController();
-  const to = setTimeout(() => controller.abort(), timeoutMs);
+//   return data as T;
+// }
 
-  try {
-    const data = await fetchStrapiDataFromServer<T>({
-      ...props,
-    });
-    return { data, status: 200 };
-  } catch (e: any) {
-    const aborted = e?.name === 'AbortError';
-    return {
-      data: null,
-      error: aborted ? 'Timeout contacting CMS' : (e?.message || 'Unknown Strapi error'),
-      status: aborted ? 504 : 502,
-    };
-  } finally {
-    clearTimeout(to);
-  }
-}
+// export async function safeFetchStrapiData<T>(props: StrapiFetchProps, timeoutMs = 5000): Promise<StrapiResult<T>> {
+//   const controller = new AbortController();
+//   const to = setTimeout(() => controller.abort(), timeoutMs);
+
+//   try {
+//     const data = await fetchStrapiDataFromServer<T>({
+//       ...props,
+//     });
+//     return { data, status: 200 };
+//   } catch (e: any) {
+//     const aborted = e?.name === 'AbortError';
+//     return {
+//       data: null,
+//       error: aborted ? 'Timeout contacting CMS' : (e?.message || 'Unknown Strapi error'),
+//       status: aborted ? 504 : 502,
+//     };
+//   } finally {
+//     clearTimeout(to);
+//   }
+// }

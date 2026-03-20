@@ -3,6 +3,19 @@
   gap: 1rem;
 }
 
+.messageContentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 70%;
+}
+
+.introduction {
+  color: var(--fds-semantic-text-neutral-subtle, #5c6574);
+  font-style: italic;
+  margin: 0;
+}
+
 .userAvatar {
   background-color: transparent;
   border: #f60bdb42 solid 1.5px;
@@ -35,7 +48,7 @@
   border: #08b0f359 solid 1.5px;
   padding: 1rem;
   border-radius: 1rem;
-  max-width: 70%;
+  max-width: 100%;
   word-wrap: break-word;
 }
 
@@ -45,7 +58,7 @@
   color: black;
   padding: 1rem;
   border-radius: 1rem;
-  max-width: 70%;
+  max-width: 100%;
   word-wrap: break-word;
 }
 
@@ -80,9 +93,7 @@
 }
 
 .citationsContainer {
-  margin-top: 1rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--fds-semantic-border-neutral-default, #cdd1d6);
+  margin-top: 0.5rem;
   font-size: 0.85rem;
 }
 

@@ -44,8 +44,9 @@ def format_response_node(state: AgentState, llm: BaseChatModel | Runnable):
     formatter_prompt = ChatPromptTemplate.from_messages(
         [
             ("system", """You are an expert content and data structurer.
-Your task is to take an extracted text snippet from our database and map it into the strict 'SemanticResponse' JSON format.
-In the 'summary' field, place the EXACT text excerpt from the agent's answer. DO NOT generate new text, simplify, or summarize it. Provide it as-is in its original wording.
+Your task is to take an extracted text snippet from our database (which may include a short introductory phrase separated by '---') and map it into the strict 'SemanticResponse' JSON format.
+Extract the short introductory phrase into the 'introduction' field.
+In the 'summary' field, place the EXACT text excerpt from the agent's answer (everything after the '---' separator). DO NOT generate new text, simplify, or summarize it yourself. Provide the summary as-is in its original wording without the introductory phrase.
 Extract any step-by-step instructions into the 'steps' array if they exist.
 Extract any references, sources, or articles into the 'references' array.
 Extract actionable links into 'useful_links'.

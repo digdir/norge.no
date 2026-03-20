@@ -52,17 +52,44 @@ export function ChatPageContent({assistantApiUrl}: IChatPageProps) {
           if (data.session_id) {
             setSessionId(data.session_id);
           }
+
+          let responseText = data.response;
+          let introText: string | undefined = undefined;
+
+          try {
+            const parsed = JSON.parse(responseText);
+            if (typeof parsed === 'object' && parsed !== null) {
+              if (parsed.introduction) {
+                introText = parsed.introduction;
+              }
+              responseText = parsed.summary
+                ? JSON.stringify(parsed, null, 2)
+                : responseText;
+            }
+          } catch {
+            if (
+              typeof responseText === 'string' &&
+              responseText.includes('---')
+            ) {
+              const parts = responseText.split('---');
+              introText = parts[0].trim();
+              responseText = parts.slice(1).join('---').trim();
+            }
+          }
+
           const aiMessage: ChatMessageProps = createChatMessage(
-            data.response,
+            responseText,
             'ai',
             data.citations,
+            introText,
           );
           setMessages((prev) => [...prev, aiMessage]);
         },
         onError: (error: Error) => {
           console.error('Failed to fetch response:', error);
           const errorMessage: ChatMessageProps = createChatMessage(
-            error.message || 'Beklager, jeg støtte på en feil. Vennligst prøv igjen.',
+            error.message ||
+              'Beklager, jeg støtte på en feil. Vennligst prøv igjen.',
             'ai',
           );
           setMessages((prev) => [...prev, errorMessage]);
@@ -82,6 +109,7 @@ export function ChatPageContent({assistantApiUrl}: IChatPageProps) {
                 key={chatMessage.id}
                 id={chatMessage.id}
                 message={chatMessage.message}
+                introduction={chatMessage.introduction}
                 sender={chatMessage.sender}
                 citations={chatMessage.citations}
               />

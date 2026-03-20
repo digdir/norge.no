@@ -1,6 +1,5 @@
 {
   "name": "norge-no",
-  "main": "./dist/_worker.js",
   "compatibility_date": "2025-05-13",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
