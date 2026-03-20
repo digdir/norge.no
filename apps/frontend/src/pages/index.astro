@@ -4,7 +4,6 @@ import { PageLayout } from '@packages/ui/layouts';
 import RootLayout from '../layouts/RootLayout.astro';
 import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-theme';
-import { LivshendelseListe } from '@components/livshendelse-liste';
 ---
 <RootLayout>
   <PageLayout>
@@ -15,7 +14,6 @@ import { LivshendelseListe } from '@components/livshendelse-liste';
       </div>
       <ServiceCategoryGrid client:visible />
       <PopularServices client:visible />
-      <LivshendelseListe client:load />
       <ChatPopup client:load />
   </PageLayout>
 </RootLayout>

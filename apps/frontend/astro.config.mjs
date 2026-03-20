@@ -15,6 +15,8 @@ export default defineConfig({
     platformProxy: {
       enabled: true,
     },
+    sessions: false,
+    imageService: 'passthrough',
   }),
   vite: {
     resolve: {

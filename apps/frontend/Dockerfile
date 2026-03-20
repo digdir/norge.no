@@ -1,8 +1,5 @@
 # Use the official Deno image
-FROM denoland/deno:2.5.4
-
-ARG STRAPI_API_URL=http://localhost:1337
-ENV STRAPI_API_URL=${STRAPI_API_URL}
+FROM denoland/deno:2.7.7
 
 RUN apt-get update && apt-get install -y nodejs npm && rm -rf /var/lib/apt/lists/*
 

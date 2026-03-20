@@ -1,17 +1,9 @@
 {
-  "workspace": ["packages/*", "apps/frontend"],
+  "workspace": ["packages/*", "apps/frontend", "apps/assistant"],
   "tasks": {
     "frontend:dev": "cd apps/frontend && sh -c 'wrangler types && astro dev'",
     "frontend:build": "cd apps/frontend && sh -c 'wrangler types && astro build'",
     "frontend:preview": "cd apps/frontend && sh -c 'wrangler types && wrangler dev --ip 0.0.0.0'",
-    "cms:install": "cd apps/cms && pnpm approve-builds && pnpm install",
-    "cms:dev": "cd apps/cms && sh -c 'pnpm run develop'",
-    "cms:build": "cd apps/cms && sh -c 'pnpm approve-builds && pnpm install && pnpm run build'",
-    "cms:console": "cd apps/cms && sh -c 'pnpm run console'",
-    "cms:deploy": "cd apps/cms && sh -c 'pnpm run deploy'",
-    "cms:start": "cd apps/cms && sh -c 'pnpm run start'",
-    "cms:upgrade": "cd apps/cms && sh -c 'npx @strapi/upgrade latest'",
-    "cms:upgrade:dry": "cd apps/cms && sh -c 'npx @strapi/upgrade latest --dry'",
     "assistant:install": "cd apps/assistant && sh -c 'poetry install'",
     "assistant:dev": "cd apps/assistant && sh -c 'poetry run python -m src.main'",
     "assistant:build": "cd apps/assistant && sh -c 'poetry build'"

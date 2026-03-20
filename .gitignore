@@ -267,24 +267,6 @@ dist
 
 **/coverage
 
-############################
-# Strapi
-############################
-
-**/.env
-**/license.txt
-**/exports
-**/.strapi
-**/dist
-**/build
-**/.strapi-updater.json
-**/.strapi-cloud.json
-# LangChain
-**/.langchain.db
-**/*.db
-**/*.sqlite
-**/*.sqlite3
-
 # Vector DB
 apps/assistant/db/
 
