@@ -7,11 +7,11 @@ on:
     branches:
       - main
     paths:
-      - 'apps/assistant/**'
-      - '.github/workflows/assistant.yml'
+      - "apps/assistant/**"
+      - ".github/workflows/assistant.yml"
   pull_request:
     paths:
-      - 'apps/assistant/**'
+      - "apps/assistant/**"
 
 jobs:
   test:
@@ -27,7 +27,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
+          python-version: "3.13"
 
       - name: Install Poetry
         uses: snok/install-poetry@v1

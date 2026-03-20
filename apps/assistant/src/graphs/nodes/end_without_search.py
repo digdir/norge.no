@@ -1,6 +1,6 @@
 from ...states.state import AgentState
 import logging
-from langchain.schema import AIMessage
+from langchain_core.messages import AIMessage
 
 logger = logging.getLogger(__name__)
 
