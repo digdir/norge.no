@@ -1,0 +1,19 @@
+assistant.norwayeast.cloudapp.azure.com {
+    # 1. Handle the 'Preflight' (OPTIONS) request at the top level
+    @options {
+        method OPTIONS
+    }
+    header {
+        Access-Control-Allow-Origin "https://norge-no.pmdigdir.workers.dev"
+        Access-Control-Allow-Methods "GET, POST, OPTIONS"
+        Access-Control-Allow-Headers "Content-Type, Authorization"
+        Access-Control-Max-Age "3600"
+    }
+    respond @options 204
+
+    # 2. Proxy to your app and clean up headers
+    reverse_proxy assistant-app:8000 {
+        # This removes the duplicate header coming from Python/Node app
+        header_down -Access-Control-Allow-Origin
+    }
+}
