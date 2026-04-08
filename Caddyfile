@@ -6,7 +6,7 @@ assistant.norwayeast.cloudapp.azure.com {
     header {
         Access-Control-Allow-Origin "https://norge-no.pmdigdir.workers.dev"
         Access-Control-Allow-Methods "GET, POST, OPTIONS"
-        Access-Control-Allow-Headers "Content-Type, Authorization"
+        Access-Control-Allow-Headers "Content-Type, Authorization, X-Session-ID"
         Access-Control-Max-Age "3600"
     }
     respond @options 204
