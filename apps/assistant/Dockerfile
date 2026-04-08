@@ -15,8 +15,6 @@ COPY src ./src
 COPY data ./data
 COPY ingest.py .
 
-RUN --mount=type=secret,id=assistant_env poetry run python ingest.py
-
 FROM python:3.13-slim AS final
 
 WORKDIR /app
@@ -25,9 +23,10 @@ RUN addgroup --system app && adduser --system --group app
 
 COPY --from=builder /app/.venv ./.venv
 COPY src ./src
-COPY --from=builder /app/db ./db
-
-RUN chown -R app:app /app
+COPY data ./data
+COPY ingest.py .
+# db directory will be created at runtime by ingest.py
+RUN mkdir -p /app/db && chown -R app:app /app
 
 ENV PATH="/app/.venv/bin:$PATH"
 ENV PYTHONPATH="/app"
@@ -36,4 +35,4 @@ USER app
 
 EXPOSE 8000
 
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "python ingest.py && uvicorn src.main:app --host 0.0.0.0 --port 8000"]
