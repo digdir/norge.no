@@ -1,51 +1,51 @@
-name: Assistant CI
-permissions:
-  contents: read
+name: Deploy Assistant to ACA
 
 on:
   push:
     branches:
       - main
     paths:
-      - "apps/assistant/**"
-      - ".github/workflows/assistant.yml"
-  pull_request:
-    paths:
-      - "apps/assistant/**"
+      - 'apps/assistant/**'
+      - '.github/workflows/assistant.yml'
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: ${{ secrets.REGISTRY_LOGIN_SERVER }}/assistant:${{ github.sha }}
 
 jobs:
-  test:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: apps/assistant
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        # Pinned to v6.0.2
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Log in to Azure Container Registry
+        # pinned to 2.0
+        uses: azure/docker-login@15c4aadf093404726ab2ff205b2cdd33fa6d054c
         with:
-          python-version: "3.13"
+          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
+      - name: Build and Push Docker image
+        run: |
+          # The context points to the assistant app directory. 
+          # The ingestion script for ChromaDB will run automatically during this step.
+          cd apps/assistant
+          docker build -t ${{ env.IMAGE_NAME }} .
+          docker push ${{ env.IMAGE_NAME }}
+
+      - name: Deploy to Azure Container Apps
+        # Pinned to v2
+        uses: azure/container-apps-deploy-action@8dff69dac3367c32ceb2690d8f13adbeab462703
         with:
-          version: 2.0.1
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v4
-        with:
-          path: apps/assistant/.venv
-          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
-
-      - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root
-
-      - name: Run tests
-        run: poetry run pytest tests/
+          imageToDeploy: ${{ env.IMAGE_NAME }}
+          resourceGroup: assistant-test-rg
+          containerAppName: assistant
+          targetPort: 8000
+          ingress: external
+          registryUrl: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          registryUsername: ${{ secrets.REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.REGISTRY_PASSWORD }}
