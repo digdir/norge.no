@@ -30,24 +30,10 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Build and Push Docker image
-        env:
-          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
-          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
-          AZURE_OPENAI_CHAT_DEPLOYMENT_NAME: ${{ secrets.AZURE_OPENAI_CHAT_DEPLOYMENT_NAME }}
-          AZURE_OPENAI_API_VERSION: ${{ secrets.AZURE_OPENAI_API_VERSION }}
-          AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME: ${{ secrets.AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME }}
         run: |
           # The context points to the assistant app directory. 
-          # The ingestion script for ChromaDB will run automatically during this step.
           cd apps/assistant
-          cat << EOF > .env
-          AZURE_OPENAI_API_KEY=$AZURE_OPENAI_API_KEY
-          AZURE_OPENAI_ENDPOINT=$AZURE_OPENAI_ENDPOINT
-          AZURE_OPENAI_CHAT_DEPLOYMENT_NAME=$AZURE_OPENAI_CHAT_DEPLOYMENT_NAME
-          AZURE_OPENAI_API_VERSION=$AZURE_OPENAI_API_VERSION
-          AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME=$AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME
-          EOF
-          docker build --secret id=assistant_env,src=.env -t ${{ env.IMAGE_NAME }} .
+          docker build -t ${{ env.IMAGE_NAME }} .
           docker push ${{ env.IMAGE_NAME }}
 
       - name: Deploy to Azure Container Apps
