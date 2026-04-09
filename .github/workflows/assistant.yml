@@ -1,16 +1,20 @@
-name: Deploy Assistant to ACA
+name: Deploy Assistant to Azure Container Apps
 
 on:
   push:
     branches:
       - main
-    paths:
-      - "apps/assistant/**"
-      - ".github/workflows/assistant.yml"
-  workflow_dispatch:
+
+# REQUIRED FOR OIDC
+permissions:
+  id-token: write
+  contents: read
 
 env:
-  IMAGE_NAME: ${{ secrets.REGISTRY_LOGIN_SERVER }}/assistant:${{ github.sha }}
+  ACR_LOGIN_SERVER: norgeacr.azurecr.io
+  CONTAINER_APP_NAME: assistant
+  RESOURCE_GROUP: assistant-test-rg
+  IMAGE_NAME: assistant
 
 jobs:
   build-and-deploy:
@@ -21,30 +25,36 @@ jobs:
         # Pinned to v6.0.2
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
+      # OIDC LOGIN (No JSON secrets needed!)
+      - name: Log in to Azure
+        # Pinned to v3.0.0
+        uses: azure/login@532459ea530d8321f2fb9bb10d1e0bcf23869a43
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
       - name: Log in to Azure Container Registry
         # pinned to 2.0
         uses: azure/docker-login@15c4aadf093404726ab2ff205b2cdd33fa6d054c
         with:
-          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          login-server: ${{ env.ACR_LOGIN_SERVER }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      - name: Build and Push Docker image
+      - name: Build and push Docker image
         run: |
-          # The context points to the assistant app directory. 
-          cd apps/assistant
-          docker build -t ${{ env.IMAGE_NAME }} .
-          docker push ${{ env.IMAGE_NAME }}
+          docker build -t ${{ env.ACR_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
+          docker push ${{ env.ACR_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
 
       - name: Deploy to Azure Container Apps
         # Pinned to v2
         uses: azure/container-apps-deploy-action@8dff69dac3367c32ceb2690d8f13adbeab462703
         with:
-          imageToDeploy: ${{ env.IMAGE_NAME }}
-          resourceGroup: assistant-test-rg
-          containerAppName: assistant
-          targetPort: 8000
-          ingress: external
-          registryUrl: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-          registryUsername: ${{ secrets.REGISTRY_USERNAME }}
-          registryPassword: ${{ secrets.REGISTRY_PASSWORD }}
+          appSourcePath: ${{ github.workspace }}
+          acrName: norgeacr
+          acrUsername: ${{ secrets.REGISTRY_USERNAME }}
+          acrPassword: ${{ secrets.REGISTRY_PASSWORD }}
+          containerAppName: ${{ env.CONTAINER_APP_NAME }}
+          resourceGroup: ${{ env.RESOURCE_GROUP }}
+          imageToDeploy: ${{ env.ACR_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
