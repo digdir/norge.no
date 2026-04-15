@@ -17,7 +17,7 @@ dependencies = [
     "unstructured[md]==0.21.5",
     "fastapi==0.135.1",
     "uvicorn==0.42.0",
-    "python-multipart==0.0.22",
+    "python-multipart==0.0.26",
     "langchain-chroma==1.1.0",
     "beautifulsoup4==4.14.3",
     "langchain-ollama==1.0.1",
